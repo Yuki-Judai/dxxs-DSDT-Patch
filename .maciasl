@@ -1,5 +1,5 @@
 [1.0] == 语法错误Syntax Error Fixes	NullPatch.txt
-[1.1]   Fix _PLD Buffer/Package Error	syntax/SSDT_P8XH_Error_Fix.txt
+[1.1]   SSDT P8XH error fix	syntax/SSDT_P8XH_Error_Fix.txt
 [2.0] == 通用General NullPatch.txt
 [2.1]  Add AppleLPC	general/AppleLPC_Winth_id_3A18.txt
 [2.2]  Ethernet BuiltIn	general/AppleLPC_Winth_id_3A18.txt
