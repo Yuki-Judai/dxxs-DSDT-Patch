@@ -1,9 +1,9 @@
-[1.0] == 语法错误Syntax Error Fixes  NullPatch.txt
+[1.0] == 语法错误Syntax Error Fixes /NullPatch.txt
 [1.1] SSDT P8XH error fix syntax/SSDT_P8XH_Error_Fix.txt
-[2.0] == 通用General  NullPatch.txt
+[2.0] == 通用General /NullPatch.txt
 [2.1] Add AppleLPC general/AppleLPC_Winth_id_3A18.txt
 [2.2] Ethernet BuiltIn general/Ethernet_BuiltIn_Patch.txt
-[3.0] == 电量补丁Battery Patches  NullPatch.txt
+[3.0] == 电量补丁Battery Patches /NullPatch.txt
 [3.1] Acer Aspire EC-471 battery/battery_Acer_Aspire_EC_471G.txt
 [3.2] Acer Aspire E1-571/R7-571/R7-572 battery/battery_Acer_E1-571G_R7-571G_R7-572G.txt
 [3.3] ASUS A45VM battery/battery_ASUS_A45VM.txt
