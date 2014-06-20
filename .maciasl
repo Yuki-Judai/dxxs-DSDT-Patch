@@ -1,26 +1,26 @@
 [1.0] == 语法错误Syntax Error Fixes NullPatch.txt
-[1.1]  SSDT P8XH error fix	syntax/SSDT_P8XH_Error_Fix.txt
+[1.1] SSDT P8XH error fix syntax/SSDT_P8XH_Error_Fix.txt
 [2.0] == 通用General NullPatch.txt
-[2.1]  Add AppleLPC	general/AppleLPC_Winth_id_3A18.txt
-[2.2]  Ethernet BuiltIn	general/Ethernet_BuiltIn_Patch.txt
+[2.1] Add AppleLPC general/AppleLPC_Winth_id_3A18.txt
+[2.2] Ethernet BuiltIn general/Ethernet_BuiltIn_Patch.txt
 [3.0] == 电量补丁Battery Patches NullPatch.txt
-[3.1]  Acer Aspire EC-471	battery/battery_Acer_Aspire_EC_471G.txt
-[3.2]  Acer Aspire E1-571/R7-571/R7-572	battery/battery_Acer_E1-571G_R7-571G_R7-572G.txt
-[3.3]  ASUS A45VM	battery/battery_ASUS_A45VM.txt
-[3.4]  ASUS K42JZ/N43SN	battery/battery_ASUS_K42JZ-N43SN.txt
-[3.5]  ASUS K43SD	battery/battery_ASUS_K43SD.txt
-[3.6]  DELL 5220 15R 2618	battery/battery_DELL_5220_15R_2618.txt
-[3.7]  DELL XPS 14Z 	battery/battery_Dell_XPS_14Z.txt
-[3.8]  Gigabyte U24F 	battery/battery_Gigabyte_U24F.txt
-[3.9]  HASEE K580S 	battery/battery_HASEE_K580S.txt
-[3.10]  HASEE K650C 	battery/battery_HASEE_K650C.txt
-[3.11]  HP Envy6 1005TX 	battery/battery_HP_Envy6_1005TX.txt
-[3.12]  Lenovo G460 	battery/battery_Lenovo_G460.txt
-[3.13]  Lenovo K47G 	battery/battery_Lenovo_K47G.txt
-[3.14]  Lenovo V450 	battery/battery_Lenovo_V450.txt
-[3.15]  Lenovo Y410P 	battery/battery_Lenovo_Y410P.txt
-[3.16]  Lenovo Y450 	battery/battery_Lenovo_Y450.txt
-[3.17]  Lenovo Z480 	battery/battery_Lenovo_Z480.txt
-[3.18]  MECHREVO MR X5 	battery/battery_MECHREVO_MR_X5.txt
-[3.19]  Sony Fit-15E/SVF-15327 	battery/battery_Sony_Fit_15E_or_SVF15327.txt
-[3.20]  Sumsang XQ701T1A 	battery/battery_Sumsang_XQ701T1A.txt
+[3.1] Acer Aspire EC-471 battery/battery_Acer_Aspire_EC_471G.txt
+[3.2] Acer Aspire E1-571/R7-571/R7-572 battery/battery_Acer_E1-571G_R7-571G_R7-572G.txt
+[3.3] ASUS A45VM battery/battery_ASUS_A45VM.txt
+[3.4] ASUS K42JZ/N43SN battery/battery_ASUS_K42JZ-N43SN.txt
+[3.5] ASUS K43SD battery/battery_ASUS_K43SD.txt
+[3.6] DELL 5220 15R 2618 battery/battery_DELL_5220_15R_2618.txt
+[3.7] DELL XPS 14Z battery/battery_Dell_XPS_14Z.txt
+[3.8] Gigabyte U24F battery/battery_Gigabyte_U24F.txt
+[3.9] HASEE K580S battery/battery_HASEE_K580S.txt
+[3.10] HASEE K650C battery/battery_HASEE_K650C.txt
+[3.11] HP Envy6 1005TX battery/battery_HP_Envy6_1005TX.txt
+[3.12] Lenovo G460 battery/battery_Lenovo_G460.txt
+[3.13] Lenovo K47G battery/battery_Lenovo_K47G.txt
+[3.14] Lenovo V450 battery/battery_Lenovo_V450.txt
+[3.15] Lenovo Y410P battery/battery_Lenovo_Y410P.txt
+[3.16] Lenovo Y450 battery/battery_Lenovo_Y450.txt
+[3.17] Lenovo Z480 battery/battery_Lenovo_Z480.txt
+[3.18] MECHREVO MR X5 battery/battery_MECHREVO_MR_X5.txt
+[3.19] Sony Fit-15E/SVF-15327 battery/battery_Sony_Fit_15E_or_SVF15327.txt
+[3.20] Sumsang XQ701T1A battery/battery_Sumsang_XQ701T1A.txt
