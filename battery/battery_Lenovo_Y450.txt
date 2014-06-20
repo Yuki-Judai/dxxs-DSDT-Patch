@@ -1,0 +1,113 @@
+#Maintained by: dxxs for: 派奇
+#battery_Lenovo_Y450.txt
+
+# version(版本): 1.0
+# Update Time(更新时间) : initial version, 初始版本
+
+# initial work by dxxs 2014-06-20, 由 dxxs 制作 
+
+# works for: 针对
+#  Lenovo Y450
+
+# Tip: If you get a 0% battery status,you should also patch the Rehabman's "Fix Mutex with non-zero SyncLevel" patch.
+# You also can patch the both of your computer's battery patch and the Rehabman's patch at one time.
+
+# 注意：如果打过电量补丁后，有获取的电池状态显示为0%的情况，还需要打 Rehabman的 “Fix Mutex with non-zero SyncLevel” 补丁。
+# 你也可以，一次性打好 自己电脑的电量补丁 和 Rehabman 的那个补丁。
+
+# ==== Field devide 字段拆分 ====
+#BATD
+into device label EC0 code_regex BATD,\s+16, replace_matched begin BA00,8,BA01,8, end;
+#MCUR
+into device label EC0 code_regex MCUR,\s+16, replace_matched begin MCU0,8, MCU1,8, end;
+#MBRM
+into device label EC0 code_regex MBRM,\s+16, replace_matched begin MBR0,8, MBR1,8, end;
+#MBVG
+into device label EC0 code_regex MBVG,\s+16, replace_matched begin MBV0,8, MBV1,8, end;
+#B1FC
+into device label EC0 code_regex B1FC,\s+16, replace_matched begin B1F0,8, B1F1,8, end;
+#STCC
+into device label EC0 code_regex STCC,\s+16, replace_matched begin STC0,8, STC1,8, end;
+#SPCC
+into device label EC0 code_regex SPCC,\s+16 replace_matched begin SPC0,8, SPC1,8, end;
+#SMW0
+into device label EC0 code_regex SMW0,\s+16 replace_matched begin SMW0,8, SMW1,8 end;
+
+# ==== Replace called method 替换调用方法 ====
+#SMD0
+into method label SMWR code_regex \sSMD0 replaceall_matched begin RECB(0x22,256) end;
+#BATD
+into method label _Q20 code_regex \(BATD, replaceall_matched begin (B1B2(BA00,BA01), end;
+into method label UPAC code_regex \(BATD, replaceall_matched begin (B1B2(BA00,BA01), end;
+into method label UPAC code_regex \sBATD replaceall_matched begin B1B2(BA00,BA01) end;
+into method label SELE code_regex \(BATD, replaceall_matched begin (B1B2(BA00,BA01), end;
+#MCUR
+into method label UPBS code_regex \(\^\^PCI0.LPCB.EC0.MCUR, replaceall_matched begin (B1B2(^^PCI0.LPCB.EC0.MCU0,^^PCI0.LPCB.EC0.MCU1), end;
+#MBRM
+into method label UPBS code_regex \(\^\^PCI0.LPCB.EC0.MBRM, replaceall_matched begin (B1B2(^^PCI0.LPCB.EC0.MBR0,^^PCI0.LPCB.EC0.MBR1), end;
+#MBVG
+into method label UPBS code_regex \(\^\^PCI0.LPCB.EC0.MBVG, replaceall_matched begin (B1B2(^^PCI0.LPCB.EC0.MBV0,^^PCI0.LPCB.EC0.MBV1), end;
+#B1FC
+into method label UPBI code_regex \(\^\^PCI0.LPCB.EC0.B1FC, replaceall_matched begin (B1B2(^^PCI0.LPCB.EC0.B1F0,^^PCI0.LPCB.EC0.B1F1), end;
+#STCC
+into method label BASL code_regex \sSTCC replaceall_matched begin B1B2(STC0,STC1) end;
+#SPCC
+into method label BASL code_regex \sSPCC replaceall_matched begin B1B2(SPC0,SPC1) end;
+#SMW0
+into method label SMRD code_regex \(SMW0, replaceall_matched begin (B1B2(SMW0,SMW1), end;
+into method label SMRD code_regex \sSMW0 replaceall_matched begin B1B2(SMW0,SMW1) end;
+#FLD1
+into method label SMRD code_regex \(FLD1 replaceall_matched begin (RECB(0x1C,128) end;
+#FLD2
+into method label SMRD code_regex \(FLD2 replaceall_matched begin (RECB(0x1C,192) end;
+#FLD3
+into method label SMRD code_regex \(FLD3 replaceall_matched begin (RECB(0x1C,256) end;
+
+# ==== Data handling method 数据处理方法 ====
+# utility methods to read/write buffers from/to EC
+into method label RE1B parent_label EC0 remove_entry;
+into method label RECB parent_label EC0 remove_entry;
+into device label EC0 insert
+begin
+Method (RE1B, 1, NotSerialized)\n
+{\n
+    OperationRegion(ERAM, EmbeddedControl, Arg0, 1)\n
+    Field(ERAM, ByteAcc, NoLock, Preserve) { BYTE, 8 }\n
+    Return(BYTE)\n
+}\n
+Method (RECB, 2, Serialized)\n
+{\n
+    ShiftRight(Arg1, 3, Arg1)\n
+    Name(TEMP, Buffer(Arg1) { })\n
+    Add(Arg0, Arg1, Arg1)\n
+    Store(0, Local0)\n
+    While (LLess(Arg0, Arg1))\n
+    {\n
+        Store(RE1B(Arg0), Index(TEMP, Local0))\n
+        Increment(Arg0)\n
+        Increment(Local0)\n
+    }\n
+    Return(TEMP)\n
+}\n
+end;
+
+#B1B2
+into method label B1B2 remove_entry;
+into definitionblock code_regex . insert
+begin
+Method (B1B2, 2, NotSerialized) { Return(Or(Arg0, ShiftLeft(Arg1, 8))) }\n
+end;
+
+#B1B4
+into method label B1B4 remove_entry;
+into definitionblock code_regex . insert
+begin
+Method (B1B4, 4, NotSerialized)\n
+{\n
+    Store(Arg3, Local0)\n
+    Or(Arg2, ShiftLeft(Local0, 8), Local0)\n
+    Or(Arg1, ShiftLeft(Local0, 8), Local0)\n
+    Or(Arg0, ShiftLeft(Local0, 8), Local0)\n
+    Return(Local0)\n
+}\n
+end;

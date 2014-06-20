@@ -1,0 +1,52 @@
+#Maintained by: dxxs for: 派奇
+#SSDT_P8XH_Error_Fix.txt
+
+# version(版本): 1.0
+# Update Time(更新时间) : initial version, 初始版本
+
+# initial work by dxxs 2014-06-20, 由 dxxs 制作
+
+# Fix P8XH syntax errors of some SSDTs with Device (PEGP)
+# 修复一些电脑的，带有 Device (PEGP) 的 SSDT 的语法错误。
+
+into_all all code_regex P8XH\s\(One,\s0x77,\sP8XH\s\(Zero,\sZero,\sReturn\s\(One\)\)\) replace_matched
+begin
+P8XH (One, 0x77, Zero)\n
+P8XH (Zero, Zero, One)\n
+Return (One)
+end;
+
+into_all all code_regex P8XH\s\(One,\s0x77,\sP8XH\s\(Zero,\sOne,\sReturn\s\(One\)\)\) replace_matched
+begin
+P8XH (One, 0x77, Zero)\n
+P8XH (Zero, One, One)\n
+Return (One)
+end;
+
+into_all all code_regex P8XH\s\(One,\s0x77,\sP8XH\s\(Zero,\s0x02,\sReturn\s\(LNot\s\(\\_SB.PCI0.PEG0.PEGP.SGPI\s\(\\_SB.PCI0.PEG0.PEGP.ESEL\)\)\)\)\) replace_matched
+begin
+P8XH (One, 0x77, Zero)\n
+P8XH (Zero, 0x02, One)\n
+Return (LNot (\\_SB.PCI0.PEG0.PEGP.SGPI (\\_SB.PCI0.PEG0.PEGP.ESEL)))
+end;
+
+into_all all code_regex P8XH\s\(One,\s0x99,\sP8XH\s\(Zero,\sZero,\sReturn\s\(One\)\)\) replace_matched
+begin
+P8XH (One, 0x99, Zero)\n
+P8XH (Zero, Zero, One)\n
+Return (One)
+end;
+
+into_all all code_regex P8XH\s\(One,\s0x99,\sP8XH\s\(Zero,\sOne,\sReturn\s\(One\)\)\) replace_matched
+begin
+P8XH (One, 0x99, Zero)\n
+P8XH (Zero, One, One)\n
+Return (One)
+end;
+
+into_all all code_regex P8XH\s\(One,\s0x99,\sP8XH\s\(Zero,\s0x02,\sReturn\s\(\\_SB.PCI0.PEG0.PEGP.SGPI\s\(ESEL\)\)\)\) replace_matched
+begin
+P8XH (One, 0x99, Zero)\n
+P8XH (Zero, 0x02, One)\n
+Return (\\_SB.PCI0.PEG0.PEGP.SGPI (ESEL))
+end;
