@@ -1,5 +1,6 @@
 [1.0] == 语法错误Syntax Error Fixes	NullPatch.txt
 [1.1] SSDT P8XH error fix	syntax/SSDT_P8XH_Error_Fix.txt
+[1.2] SSDT Package(){0x80000000} eror fix	syntax/SSDT_Package(){0x80000000}_Eror_Fix.txt
 [2.0] == 通用General	NullPatch.txt
 [2.1] Add AppleLPC	general/AppleLPC_Winth_id_3A18.txt
 [2.2] Ethernet BuiltIn	general/Ethernet_BuiltIn_Patch.txt
@@ -24,3 +25,4 @@
 [3.18] MECHREVO MR X5	battery/battery_MECHREVO_MR_X5.txt
 [3.19] Sony Fit-15E/SVF-15327	battery/battery_Sony_Fit_15E_or_SVF15327.txt
 [3.20] Sumsang XQ701T1A	battery/battery_Sumsang_XQ701T1A.txt
+[3.21] Toshiba M805 T02T	battery/battery_Toshiba_M805_T02T.txt
