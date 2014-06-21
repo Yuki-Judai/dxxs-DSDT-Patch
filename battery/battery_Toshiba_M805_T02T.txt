@@ -85,13 +85,13 @@ into device label EC0 code_regex PSET,\s+16 replace_matched begin PSES,8, PSET,8
 
 # ==== Replace called method 替换调用方法 ====
 #MBMN
-into method label UBIF code_regex \^\^PCI0.LPCB.EC0.MBMN replaceall_matched begin ^^PCI0.LPCB.EC0.RECB(0x2A, 80) end;
-into method label UBIX code_regex \^\^PCI0.LPCB.EC0.MBMN replaceall_matched begin ^^PCI0.LPCB.EC0.RECB(0x2A, 80) end;
-into method label HMB1 code_regex \^\^PCI0.LPCB.EC0.MBMN replaceall_matched begin ^^PCI0.LPCB.EC0.RECB(0x2A, 80) end;
+into method label UBIF code_regex \^\^PCI0.LPCB.EC0.MBMN replaceall_matched begin ^^PCI0.LPCB.EC0.RECB(0x1A, 80) end;
+into method label UBIX code_regex \^\^PCI0.LPCB.EC0.MBMN replaceall_matched begin ^^PCI0.LPCB.EC0.RECB(0x1A, 80) end;
+into method label HMB1 code_regex \^\^PCI0.LPCB.EC0.MBMN replaceall_matched begin ^^PCI0.LPCB.EC0.RECB(0x1A, 80) end;
 #MBPN
-into method label UBIF code_regex \^\^PCI0.LPCB.EC0.MBPN replaceall_matched begin ^^PCI0.LPCB.EC0.RECB(0x35, 96) end;
-into method label UBIX code_regex \^\^PCI0.LPCB.EC0.MBPN replaceall_matched begin ^^PCI0.LPCB.EC0.RECB(0x35, 96) end;
-into method label HMB1 code_regex \^\^PCI0.LPCB.EC0.MBPN replaceall_matched begin ^^PCI0.LPCB.EC0.RECB(0x35, 96) end;
+into method label UBIF code_regex \^\^PCI0.LPCB.EC0.MBPN replaceall_matched begin ^^PCI0.LPCB.EC0.RECB(0x25, 96) end;
+into method label UBIX code_regex \^\^PCI0.LPCB.EC0.MBPN replaceall_matched begin ^^PCI0.LPCB.EC0.RECB(0x25, 96) end;
+into method label HMB1 code_regex \^\^PCI0.LPCB.EC0.MBPN replaceall_matched begin ^^PCI0.LPCB.EC0.RECB(0x25, 96) end;
 #FSPD
 into method label SPFC code_regex \^\^PCI0.LPCB.EC0.FSPD replaceall_matched begin B1B2(^^PCI0.LPCB.EC0.FSPC,^^PCI0.LPCB.EC0.FSPD) end;
 #BATS
