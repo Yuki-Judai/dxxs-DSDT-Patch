@@ -1,0 +1,12 @@
+#Maintained by: dxxs for: 派奇
+#battery_HASEE_K650C.txt
+
+# version(版本): 1.0
+# Update Time(更新时间) : initial version, 初始版本
+
+# initial work by dxxs 2014-06-22, 由 dxxs 制作
+
+# Fix Non-hex leters must be upper case error
+# 修复 Non-hex leters must be upper case 错误，常见于三代酷睿平台
+
+into_all all code_regex pnp0c14 replaceall_matched begin PNP0C14 end;
