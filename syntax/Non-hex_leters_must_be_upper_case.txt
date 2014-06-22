@@ -1,5 +1,5 @@
 #Maintained by: dxxs for: 派奇
-#battery_HASEE_K650C.txt
+#Non-hex_leters_must_be_upper_case.txt
 
 # version(版本): 1.0
 # Update Time(更新时间) : initial version, 初始版本
