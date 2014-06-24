@@ -1,7 +1,7 @@
 #Maintained by: dxxs for: 派奇
 #battery_ASUS_N55XI267.txt
 
-# version(版本): 2.0
+# version(版本): 2.1
 # Update Time(更新时间) : 2014-6-24
 
 # initial work by dxxs 2014-06-22, 由 dxxs 制作 
@@ -42,7 +42,7 @@ into method label SMBW code_regex Store\s\(Arg4,\sBDAT\) replaceall_matched begi
 into method label ECSB code_regex Store\s\(DerefOf\s\(Index\s\(Arg6,\sOne\)\),\sBDAT\)  replaceall_matched begin WECB(0x1C,256,DerefOf (Index (Arg6, One))) end;
 into method label ECSB code_regex \(BDAT replaceall_matched begin (RECB(0x1C,256) end;
 #BDA2
-into method label ECSB code_regex \sBDA2 replaceall_matched begin RECB(0x44,256) end;
+into method label ECSB code_regex Store\s\(DerefOf\s\(Index\s\(Arg6,\sOne\)\), BDA2) replaceall_matched begin WECB(0x44,256,DerefOf (Index (Arg6, One))) end;
 into method label ECSB code_regex \(BDA2 replaceall_matched begin (RECB(0x44,256) end;
 
 # ==== Data handling method 数据处理方法 ====
