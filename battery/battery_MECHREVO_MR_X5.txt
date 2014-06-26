@@ -1,12 +1,14 @@
 #Maintained by: dxxs for: 派奇
 #battery_MECHREVO_MR_X5.txt
 
-# version(版本): 2.0
+# version(版本): 2.1
 # Update Time(更新时间) : 2014-6-26
 
 # initial work by dxxs 2014-06-20, 由 dxxs 制作 
 
 # works for: 针对
+#  MSI 微星 GE 60
+#  MSI 微星 GS 60
 #  MECHREVO MR X5 清华同方 机械革命 MR X5
 
 # Tip: If you get a 0% battery status,you should also patch the Rehabman's "Fix Mutex with non-zero SyncLevel" patch.
