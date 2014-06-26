@@ -1,5 +1,4 @@
--基于 MaciASL 的 DSDT/SSDT 补丁。
- +派奇 --- DSDT Patch
++派奇 --- DSDT Patch
  +=======================
  +
  +> 基于 MaciASL 的 DSDT/SSDT 补丁。
