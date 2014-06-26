@@ -10,7 +10,7 @@
 [3.2] Acer Aspire EC-471	battery/battery_Acer_Aspire_EC_471G.txt
 [3.3] Acer Aspire E1-571/R7-571/R7-572	battery/battery_Acer_E1-571G_R7-571G_R7-572G.txt
 [3.4] Alienware M14 XR2	battery/battery_Alienware_M14_XR2.txt
-[3.5] ASUS A45VM	battery/battery_ASUS_A45VM.txt
+[3.5] ASUS A45VM/A45VD	battery/battery_ASUS_A45VM.txt
 [3.6] ASUS K42JZ/N43SN	battery/battery_ASUS_K42JZ-N43SN.txt
 [3.7] ASUS K43SD	battery/battery_ASUS_K43SD.txt
 [3.8] ASUS N55XI267	battery/battery_ASUS_N55XI267.txt
@@ -28,7 +28,7 @@
 [3.20] Lenovo Y450	battery/battery_Lenovo_Y450.txt
 [3.21] Lenovo Z360	battery/battery_Lenovo_Z360.txt
 [3.22] Lenovo Z480	battery/battery_Lenovo_Z480.txt
-[3.23] MECHREVO MR X5	battery/battery_MECHREVO_MR_X5.txt
+[3.23] MSI GE60/GS60 TongFang MECHREVO MR X5	battery/battery_MECHREVO_MR_X5.txt
 [3.24] Sony Fit-15E/SVF-15327	battery/battery_Sony_Fit_15E_or_SVF15327.txt
 [3.25] Sumsang XQ701T1A	battery/battery_Sumsang_XQ701T1A.txt
 [3.26] Toshiba M805 T02T	battery/battery_Toshiba_M805_T02T.txt
