@@ -1,8 +1,8 @@
 #Maintained by: dxxs for: 派奇
 #battery_Lenovo_G460.txt
 
-# version(版本): 1.0
-# Update Time(更新时间) : initial version, 初始版本
+# version(版本): 2.0
+# Update Time(更新时间) : 2014-6-26
 
 # initial work by dxxs 2014-06-20, 由 dxxs 制作 
 
@@ -37,8 +37,8 @@ into method label _BIF code_regex \^\^EC0.BFC0 replaceall_matched begin B1B2(^^E
 #BAC0
 into method label _BST code_regex \^\^EC0.BAC0 replaceall_matched begin B1B2(^^EC0.BAC0,^^EC0.BAC1) end;
 #ERIB
-into method label FANG code_regex \sERIB replaceall_matched begin B1B2(ERI0,ERI1) end;
-into method label FANW code_regex \sERIB replaceall_matched begin B1B2(ERI0,ERI1) end;
+into method label FANG code_regex Store\s\(Arg0,\sERIB\) replaceall_matched begin Store(ShiftRight(Arg0,8), ERI1)\nStore(Arg0, ERI0) end;
+into method label FANW code_regex Store\s\(Arg0,\sERIB\) replaceall_matched begin Store(ShiftRight(Arg0,8), ERI1)\nStore(Arg0, ERI0) end;
 
 # ==== Data handling method 数据处理方法 ====
 #B1B2
