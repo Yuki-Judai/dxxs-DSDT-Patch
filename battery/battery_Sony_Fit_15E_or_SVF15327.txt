@@ -1,8 +1,8 @@
 #Maintained by: dxxs for: 派奇
 #battery_Sony_Fit_15E_or_SVF15327.txt
 
-# version(版本): 1.0
-# Update Time(更新时间) : initial version, 初始版本
+# version(版本): 2.0
+# Update Time(更新时间) : 2014-6-26
 
 # initial work by dxxs 2014-06-20, 由 dxxs 制作 
 
