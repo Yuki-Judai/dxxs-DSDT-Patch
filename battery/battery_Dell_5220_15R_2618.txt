@@ -1,7 +1,7 @@
 #Maintained by: dxxs for: 派奇
-#battery_DELL_5220_15R_2618.txt
+#battery_Dell_5220_15R_2618.txt
 
-# version(版本): 2.0
+# version(版本): 2.1
 # Update Time(更新时间) : 2014-6-26
 
 # initial work by dxxs 2014-06-20, 由 dxxs 制作 
