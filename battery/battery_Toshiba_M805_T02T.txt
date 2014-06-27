@@ -1,8 +1,8 @@
 #Maintained by: dxxs for: 派奇
 #battery_Toshiba_M805_T02T.txt
 
-# version(版本): 1.0
-# Update Time(更新时间) : initial version, 初始版本
+# version(版本): 2.0
+# Update Time(更新时间) : 2014-6-27
 
 # initial work by dxxs 2014-06-20, 由 dxxs 制作 
 
@@ -165,10 +165,11 @@ into method label INFO code_regex \^\^PCI0.LPCB.EC0.FEVT replaceall_matched begi
 #NEVT
 into method label INFO code_regex \^\^PCI0.LPCB.EC0.NEVT replaceall_matched begin B1B2(^^PCI0.LPCB.EC0.NEVS,^^PCI0.LPCB.EC0.NEVT) end;
 #PSST
-into method label SPFC code_regex \s\^\^PCI0.LPCB.EC0.PSST replaceall_matched begin B1B2(^^PCI0.LPCB.EC0.PSSS,^^PCI0.LPCB.EC0.PSST) end;
 into method label SPFC code_regex \(\^\^PCI0.LPCB.EC0.PSST replaceall_matched begin (B1B2(^^PCI0.LPCB.EC0.PSSS,^^PCI0.LPCB.EC0.PSST) end;
+into method label SPFC code_regex Store\s\(ShiftRight\s\(Local0,\s0x10\),\s\^\^PCI0.LPCB.EC0.PSST\) replaceall_matched begin Store(ShiftRight(ShiftRight (Local0, 0x10),8), ^^PCI0.LPCB.EC0.PSST)\nStore(ShiftRight (Local0, 0x10), ^^PCI0.LPCB.EC0.PSSS) end;
 #PSET
-into method label SPFC code_regex \s\^\^PCI0.LPCB.EC0.PSET replaceall_matched begin B1B2(^^PCI0.LPCB.EC0.PSES,^^PCI0.LPCB.EC0.PSET) end;
+into method label SPFC code_regex \^\^PCI0.LPCB.EC0.PSET, replaceall_matched begin B1B2(^^PCI0.LPCB.EC0.PSES,^^PCI0.LPCB.EC0.PSET), end;
+into method label SPFC code_regex Store\s\(And\s\(Local0,\s0xFFFF\),\s\^\^PCI0.LPCB.EC0.PSET\) replaceall_matched begin Store(ShiftRight(And (Local0, 0xFFFF),8), ^^PCI0.LPCB.EC0.PSET)\nStore(And (Local0, 0xFFFF), ^^PCI0.LPCB.EC0.PSES) end;
 
 # ==== Data handling method 数据处理方法 ====
 # utility methods to read/write buffers from/to EC
