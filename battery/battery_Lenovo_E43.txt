@@ -1,13 +1,13 @@
 #Maintained by: dxxs for: 派奇
-#battery_Lenovo_K47G.txt
+#battery_Lenovo_E43.txt
 
-# version(版本): 2.1
-# Update Time(更新时间) : 2014-6-27
+# version(版本): 1.0
+# Update Time(更新时间) : initial version, 初始版本
 
-# initial work by dxxs 2014-06-20, 由 dxxs 制作 
+# initial work by dxxs 2014-06-27, 由 dxxs 制作 
 
 # works for: 针对
-#  Lenovo K47G
+#  Lenovo E43
 
 # Tip: If you get a 0% battery status,you should also patch the Rehabman's "Fix Mutex with non-zero SyncLevel" patch.
 # You also can patch the both of your computer's battery patch and the Rehabman's patch at one time.
@@ -24,16 +24,8 @@ into device label EC0 code_regex MCUR,\s+16, replace_matched begin MCU0,8,MCU1,8
 into device label EC0 code_regex MBRM,\s+16, replace_matched begin MBRA,8,MBRB,8, end;
 #MBVG
 into device label EC0 code_regex MBVG,\s+16, replace_matched begin MBV0,8,MBV1,8, end;
-#ACUR
-into device label EC0 code_regex ACUR,\s+16, replace_matched begin ACU0,8,ACU1,8, end;
-#ABRM
-into device label EC0 code_regex ABRM,\s+16, replace_matched begin ABR0,8,ABR1,8, end;
-#ABVG
-into device label EC0 code_regex ABVG,\s+16, replace_matched begin ABV0,8,ABV1,8, end;
 #B1FC
 into device label EC0 code_regex B1FC,\s+16, replace_matched begin B1F0,8,B1F1,8, end;
-#B2FC
-into device label EC0 code_regex B2FC,\s+16, replace_matched begin B2F0,8,B2F1,8, end;
 
 # ==== Replace called method 替换调用方法 ====
 #SMD0
@@ -49,17 +41,8 @@ into method label UPBS code_regex \^\^PCI0.LPCB.EC0.MCUR replaceall_matched begi
 into method label UPBS code_regex \^\^PCI0.LPCB.EC0.MBRM replaceall_matched begin B1B2(^^PCI0.LPCB.EC0.MBRA,^^PCI0.LPCB.EC0.MBRB) end;
 #MBVG
 into method label UPBS code_regex \^\^PCI0.LPCB.EC0.MBVG replaceall_matched begin B1B2(^^PCI0.LPCB.EC0.MBV0,^^PCI0.LPCB.EC0.MBV1) end;
-#ACUR
-into method label UPB2 code_regex \^\^PCI0.LPCB.EC0.ACUR replaceall_matched begin B1B2(^^PCI0.LPCB.EC0.ACU0,^^PCI0.LPCB.EC0.ACU1) end;
-#ABRM
-into method label UPB2 code_regex \^\^PCI0.LPCB.EC0.ABRM replaceall_matched begin B1B2(^^PCI0.LPCB.EC0.ABR0,^^PCI0.LPCB.EC0.ABR1) end;
-#ABVG
-into method label UPB2 code_regex \^\^PCI0.LPCB.EC0.ABVG replaceall_matched begin B1B2(^^PCI0.LPCB.EC0.ABV0,^^PCI0.LPCB.EC0.ABV1) end;
 #B1FC
 into method label UPBI code_regex \^\^PCI0.LPCB.EC0.B1FC replaceall_matched begin B1B2(^^PCI0.LPCB.EC0.B1F0,^^PCI0.LPCB.EC0.B1F1) end;
-#B2FC
-into method label _BIF code_regex \^\^PCI0.LPCB.EC0.B2FC replaceall_matched begin B1B2(^^PCI0.LPCB.EC0.B2F0,^^PCI0.LPCB.EC0.B2F1) end;
-into method label UPI2 code_regex \^\^PCI0.LPCB.EC0.B2FC replaceall_matched begin B1B2(^^PCI0.LPCB.EC0.B2F0,^^PCI0.LPCB.EC0.B2F1) end;
 
 # ==== Data handling method 数据处理方法 ====
 into method label WE1B parent_label EC0 remove_entry;
