@@ -1,13 +1,14 @@
 #Maintained by: dxxs for: 派奇
 #battery_ASUS_N55XI267.txt
 
-# version(版本): 2.1
+# version(版本): 2.2
 # Update Time(更新时间) : 2014-6-24
 
 # initial work by dxxs 2014-06-22, 由 dxxs 制作 
 
 # works for: 针对
 #  ASUS N55XI267
+#  ASUS N75SF
 
 # Tip: If you get a 0% battery status,you should also patch the Rehabman's "Fix Mutex with non-zero SyncLevel" patch.
 # You also can patch the both of your computer's battery patch and the Rehabman's patch at one time.
