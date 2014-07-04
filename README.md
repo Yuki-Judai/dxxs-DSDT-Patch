@@ -1,5 +1,7 @@
 派奇-基于MaciASL的DSDT/SSDT补丁
 =====
+由 bbs.pcbeta.com    dxxs 维护
+=====
 使用方法
 ------
 
