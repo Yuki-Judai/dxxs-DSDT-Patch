@@ -1,8 +1,8 @@
 #Maintained by: dxxs for: 派奇
 #battery_Lenovo_E43.txt
 
-# version(版本): 1.0
-# Update Time(更新时间) : initial version, 初始版本
+# version(版本): 2.0
+# Update Time(更新时间) : 2014-7-14
 
 # initial work by dxxs 2014-06-27, 由 dxxs 制作 
 
@@ -26,6 +26,8 @@ into device label EC0 code_regex MBRM,\s+16, replace_matched begin MBRA,8,MBRB,8
 into device label EC0 code_regex MBVG,\s+16, replace_matched begin MBV0,8,MBV1,8, end;
 #B1FC
 into device label EC0 code_regex B1FC,\s+16, replace_matched begin B1F0,8,B1F1,8, end;
+#SMW0
+into device label EC0 code_regex SMW0,\s+16 replace_matched begin SMW0,8,SMW1,8 end;
 
 # ==== Replace called method 替换调用方法 ====
 #SMD0
@@ -43,8 +45,44 @@ into method label UPBS code_regex \^\^PCI0.LPCB.EC0.MBRM replaceall_matched begi
 into method label UPBS code_regex \^\^PCI0.LPCB.EC0.MBVG replaceall_matched begin B1B2(^^PCI0.LPCB.EC0.MBV0,^^PCI0.LPCB.EC0.MBV1) end;
 #B1FC
 into method label UPBI code_regex \^\^PCI0.LPCB.EC0.B1FC replaceall_matched begin B1B2(^^PCI0.LPCB.EC0.B1F0,^^PCI0.LPCB.EC0.B1F1) end;
+#SMW0
+into method label SMRD code_regex SMW0 replaceall_matched begin B1B2(SMW0,SMW1) end;
+into method label SMWR code_regex Store\s\(Arg3,\sSMW0\) replaceall_matched begin Store(ShiftRight(Arg3,8), SMW1)\nStore(Arg3, SMW0) end;
+#FLD1
+into method label SMRD code_regex \(FLD1 replaceall_matched begin (RECB(0x1C, 128) end;
+#FLD2
+into method label SMRD code_regex \(FLD2 replaceall_matched begin (RECB(0x1C, 192) end;
+#FLD3
+into method label SMRD code_regex \(FLD3 replaceall_matched begin (RECB(0x1C, 256) end;
 
 # ==== Data handling method 数据处理方法 ====
+# utility methods to read/write buffers from/to EC
+into method label RE1B parent_label EC0 remove_entry;
+into method label RECB parent_label EC0 remove_entry;
+into device label EC0 insert
+begin
+Method (RE1B, 1, NotSerialized)\n
+{\n
+    OperationRegion(ERAM, EmbeddedControl, Arg0, 1)\n
+    Field(ERAM, ByteAcc, NoLock, Preserve) { BYTE, 8 }\n
+    Return(BYTE)\n
+}\n
+Method (RECB, 2, Serialized)\n
+{\n
+    ShiftRight(Arg1, 3, Arg1)\n
+    Name(TEMP, Buffer(Arg1) { })\n
+    Add(Arg0, Arg1, Arg1)\n
+    Store(0, Local0)\n
+    While (LLess(Arg0, Arg1))\n
+    {\n
+        Store(RE1B(Arg0), Index(TEMP, Local0))\n
+        Increment(Arg0)\n
+        Increment(Local0)\n
+    }\n
+    Return(TEMP)\n
+}\n
+end;
+
 into method label WE1B parent_label EC0 remove_entry;
 into method label WECB parent_label EC0 remove_entry;
 into device label EC0 insert
