@@ -6,7 +6,7 @@
 [2.1] Add AppleLPC	general/AppleLPC_Winth_id_3A18.txt
 [2.2] Ethernet BuiltIn	general/Ethernet_BuiltIn_Patch.txt
 [3.0] == 电量补丁==Battery Patches	NullPatch.txt
-[3.1] 电量显示为0%修复-Fix Battery 0% Statu	battery/battery_statu_0%_fix.txt
+[3.1] 电量显示为0%修复-Fix Battery 0% Status	battery/battery_status_0%_fix.txt
 [3.2] Acer Aspire EC-471	battery/battery_Acer_Aspire_EC_471G.txt
 [3.3] Acer Aspire E1-571/R7-571/R7-572	battery/battery_Acer_E1-571G_R7-571G_R7-572G.txt
 [3.4] Alienware M14 XR2	battery/battery_Alienware_M14_XR2.txt
