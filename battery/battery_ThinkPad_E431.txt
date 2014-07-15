@@ -1,8 +1,8 @@
 #Maintained by: dxxs for: 派奇
 #battery_ThinkPad_E431.txt
 
-# version(版本): 1.0
-# Update Time(更新时间) : initial version, 初始版本
+# version(版本): 1.1
+# Update Time(更新时间) : 2014-7-15
 
 # initial work by dxxs 2014-07-14, 由 dxxs 制作 
 
@@ -16,6 +16,8 @@
 # 你也可以，一次性打好 自己电脑的电量补丁 和 Rehabman 的那个补丁。
 
 # ==== Field devide 字段拆分 ====
+#HWAK
+into device label EC0 code_regex HWAK,\s+16, replace_matched begin HWA0,8,HWA1,8, end;
 #SBRC
 into device label EC0 code_regex SBRC,\s+16, replace_matched begin SBR0,8,SBR1,8, end;
 #SBFC
@@ -34,6 +36,11 @@ into device label EC0 code_regex SBSN,\s+16 replace_matched begin SBS0,8,SBS1,8 
 into device label EC0 code_regex SBCH,\s+32 replace_matched begin SBC0,8,SBC1,8,SBC2,8,SBC3,8 end;
 
 # ==== Replace called method 替换调用方法 ====
+#HWAK
+into method label _L23 code_regex \\_SB.PCI0.LPCB.EC0.HWAK replaceall_matched begin B1B2(\\_SB.PCI0.LPCB.EC0.HWA0,\\_SB.PCI0.LPCB.EC0.HWA1) end;
+into method label _WAK code_regex \(\\_SB.PCI0.LPCB.EC0.HWAK replaceall_matched begin (B1B2(\\_SB.PCI0.LPCB.EC0.HWA0,\\_SB.PCI0.LPCB.EC0.HWA1) end;
+into method label _WAK code_regex Store\s\(Local0,\s\\_SB.PCI0.LPCB.EC0.HWAK\) replaceall_matched begin Store(ShiftRight(Local0,8), \\_SB.PCI0.LPCB.EC0.HWA1)\nStore(Local0, \\_SB.PCI0.LPCB.EC0.HWA0) end;
+into method label _WAK code_regex Store\s\(Zero,\s\\_SB.PCI0.LPCB.EC0.HWAK\) replaceall_matched begin Store(Zero, \\_SB.PCI0.LPCB.EC0.HWA1)\nStore(Zero, \\_SB.PCI0.LPCB.EC0.HWA0) end;
 #SBRC
 into method label GBST code_regex SBRC replaceall_matched begin B1B2(SBR0,SBR1) end;
 #SBFC
