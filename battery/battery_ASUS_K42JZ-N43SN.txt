@@ -1,13 +1,14 @@
 #Maintained by: dxxs for: 派奇
 #battery_ASUS_K42JZ-N43SN.txt
 
-# version(版本): 2.0
-# Update Time(更新时间) : 2014-6-26
+# version(版本): 2.1
+# Update Time(更新时间) : 2014-7-15
 
 # initial work by dxxs 2014-06-20, 由 dxxs 制作 
 
 # works for: 针对
 #  ASUS K42JZ
+#  ASUS K43SJ
 #  ASUS N43SN
 
 # Tip: If you get a 0% battery status,you should also patch the Rehabman's "Fix Mutex with non-zero SyncLevel" patch.
