@@ -1,8 +1,8 @@
 #Maintained by: dxxs for: 派奇
 #AppleLPC_Winth_id_3A18.txt
 
-# version(版本): 1.0
-# Update Time(更新时间) : initial version, 初始版本
+# version(版本): 2.0
+# Update Time(更新时间) : 2014-7-21
 
 # initial work by dxxs 2014-06-20, 由 dxxs 制作
 
@@ -13,7 +13,7 @@ into device label LPCB insert
 begin
 Method (_DSM, 4, NotSerialized)\n
 {\n
-Store (Package (0x06)\n
+Return (Package (0x06)\n
 {\n
 "device-id",\n
 Buffer (0x04){\n
@@ -29,8 +29,6 @@ Buffer (0x0D)\n
 {\n
 "pci8086,3a18"\n
 }\n
-}, Local0)\n
-DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))\n
-Return (Local0)\n
+})\n
 }\n
 end;
