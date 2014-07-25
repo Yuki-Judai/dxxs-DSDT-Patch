@@ -40,10 +40,11 @@
 [3.32] Lenovo Z480	battery/battery_Lenovo_Z480.txt
 [3.33] ThinkPad E430	battery/battery_ThinkPad_E430.txt
 [3.34] ThinkPad E431	battery/battery_ThinkPad_E431.txt
-[3.35] ThinkPad New X1 Carbon	battery/battery_ThinkPad_New_X1_Carbon.txt
-[3.36] MSI GE60/GS60/TongFang MECHREVO MR X5	battery/battery_MECHREVO_MR_X5.txt
-[3.37] Sony Fit-15E/SVF-15327/14316	battery/battery_Sony_Fit_15E_or_SVF15327.txt
-[3.38] Sumsang XQ701T1A	battery/battery_Sumsang_XQ701T1A.txt
-[3.39] Toshiba M805 T02T	battery/battery_Toshiba_M805_T02T.txt
+[3.35] ThinkPad E531	battery/battery_ThinkPad_E531.txt
+[3.36] ThinkPad New X1 Carbon	battery/battery_ThinkPad_New_X1_Carbon.txt
+[3.37] MSI GE60/GS60/TongFang MECHREVO MR X5	battery/battery_MECHREVO_MR_X5.txt
+[3.38] Sony Fit-15E/SVF-15327/14316	battery/battery_Sony_Fit_15E_or_SVF15327.txt
+[3.39] Sumsang XQ701T1A	battery/battery_Sumsang_XQ701T1A.txt
+[3.40] Toshiba M805 T02T	battery/battery_Toshiba_M805_T02T.txt
 [4.0] == 综合性补丁==Comprehensive Patches	NullPatch.txt
 [4.1] Hasee K480N-i7_D1_Full_Patch	comprehensive/K480N-i7_D1_Full_Patch.txt
