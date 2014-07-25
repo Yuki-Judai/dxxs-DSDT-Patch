@@ -11,38 +11,39 @@
 [3.3] Acer Aspire E1-571/R7-571/R7-572	battery/battery_Acer_E1-571G_R7-571G_R7-572G.txt
 [3.4] Alienware M14 XR2	battery/battery_Alienware_M14_XR2.txt
 [3.5] ASUS A45VM/A45VD	battery/battery_ASUS_A45VM.txt
-[3.6] ASUS K42JZ/K43SJ/N43SN	battery/battery_ASUS_K42JZ-N43SN.txt
-[3.7] ASUS K43SD/K56CM	battery/battery_ASUS_K43SD.txt
-[3.8] ASUS N55XI267/N75SF	battery/battery_ASUS_N55XI267.txt
-[3.9] DELL 14TR 7420	battery/battery_Dell_14TR_7420.txt
-[3.10] DELL 5220 15R 2618	battery/battery_Dell_5220_15R_2618.txt
-[3.11] DELL XPS 14Z	battery/battery_Dell_XPS_14Z.txt
-[3.12] Gigabyte U24F	battery/battery_Gigabyte_U24F.txt
-[3.13] HASEE K480D	battery/battery_Hasee_K480D.txt
-[3.14] HASEE K480N	battery/battery_Hasee_K480N.txt
-[3.15] HASEE K580S	battery/battery_HASEE_K580S.txt
-[3.16] HASEE K590S	battery/battery_HASEE_K590S.txt
-[3.17] HASEE K650C	battery/battery_HASEE_K650C.txt
-[3.18] HASEE/Terrans Force-K790S/X411	battery/battery_clevo_w740su.txt
-[3.19] HASEE UN43	battery/battery_Hasee_UN43.txt
-[3.20] HP Envy6 1005TX	battery/battery_HP_Envy6_1005TX.txt
-[3.21] HP Pavilion G4	battery/battery_HP_Pavilion_G4.txt
-[3.22] Lenovo B450	battery/battery_Lenovo_B450.txt
-[3.23] Lenovo E43	battery/battery_Lenovo_E43.txt
-[3.24] Lenovo G460 	battery/battery_Lenovo_G460.txt
-[3.25] Lenovo K47G	battery/battery_Lenovo_K47G.txt
-[3.26] Lenovo V450	battery/battery_Lenovo_V450.txt
-[3.27] Lenovo Y40	battery/battery_Lenovo_Y40.txt
-[3.28] Lenovo Y410P	battery/battery_Lenovo_Y410P.txt
-[3.29] Lenovo Y450	battery/battery_Lenovo_Y450.txt
-[3.30] Lenovo Z360	battery/battery_Lenovo_Z360.txt
-[3.31] Lenovo Z480	battery/battery_Lenovo_Z480.txt
-[3.32] ThinkPad E430	battery/battery_ThinkPad_E430.txt
-[3.33] ThinkPad E431	battery/battery_ThinkPad_E431.txt
-[3.34] ThinkPad New X1 Carbon	battery/battery_ThinkPad_New_X1_Carbon.txt
-[3.35] MSI GE60/GS60/TongFang MECHREVO MR X5	battery/battery_MECHREVO_MR_X5.txt
-[3.36] Sony Fit-15E/SVF-15327/14316	battery/battery_Sony_Fit_15E_or_SVF15327.txt
-[3.37] Sumsang XQ701T1A	battery/battery_Sumsang_XQ701T1A.txt
-[3.38] Toshiba M805 T02T	battery/battery_Toshiba_M805_T02T.txt
+[3.6] ASUS F83VF	battery/battery_ASUS_F83VF.txt
+[3.7] ASUS K42JZ/K43SJ/N43SN	battery/battery_ASUS_K42JZ-N43SN.txt
+[3.8] ASUS K43SD/K56CM	battery/battery_ASUS_K43SD.txt
+[3.9] ASUS N55XI267/N75SF	battery/battery_ASUS_N55XI267.txt
+[3.10] DELL 14TR 7420	battery/battery_Dell_14TR_7420.txt
+[3.11] DELL 5220 15R 2618	battery/battery_Dell_5220_15R_2618.txt
+[3.12] DELL XPS 14Z	battery/battery_Dell_XPS_14Z.txt
+[3.13] Gigabyte U24F	battery/battery_Gigabyte_U24F.txt
+[3.14] HASEE K480D	battery/battery_Hasee_K480D.txt
+[3.15] HASEE K480N	battery/battery_Hasee_K480N.txt
+[3.16] HASEE K580S	battery/battery_HASEE_K580S.txt
+[3.17] HASEE K590S	battery/battery_HASEE_K590S.txt
+[3.18] HASEE K650C	battery/battery_HASEE_K650C.txt
+[3.19] HASEE/Terrans Force-K790S/X411	battery/battery_clevo_w740su.txt
+[3.20] HASEE UN43	battery/battery_Hasee_UN43.txt
+[3.21] HP Envy6 1005TX	battery/battery_HP_Envy6_1005TX.txt
+[3.22] HP Pavilion G4	battery/battery_HP_Pavilion_G4.txt
+[3.23] Lenovo B450	battery/battery_Lenovo_B450.txt
+[3.24] Lenovo E43	battery/battery_Lenovo_E43.txt
+[3.25] Lenovo G460 	battery/battery_Lenovo_G460.txt
+[3.26] Lenovo K47G	battery/battery_Lenovo_K47G.txt
+[3.27] Lenovo V450	battery/battery_Lenovo_V450.txt
+[3.28] Lenovo Y40	battery/battery_Lenovo_Y40.txt
+[3.29] Lenovo Y410P	battery/battery_Lenovo_Y410P.txt
+[3.30] Lenovo Y450	battery/battery_Lenovo_Y450.txt
+[3.31] Lenovo Z360	battery/battery_Lenovo_Z360.txt
+[3.32] Lenovo Z480	battery/battery_Lenovo_Z480.txt
+[3.33] ThinkPad E430	battery/battery_ThinkPad_E430.txt
+[3.34] ThinkPad E431	battery/battery_ThinkPad_E431.txt
+[3.35] ThinkPad New X1 Carbon	battery/battery_ThinkPad_New_X1_Carbon.txt
+[3.36] MSI GE60/GS60/TongFang MECHREVO MR X5	battery/battery_MECHREVO_MR_X5.txt
+[3.37] Sony Fit-15E/SVF-15327/14316	battery/battery_Sony_Fit_15E_or_SVF15327.txt
+[3.38] Sumsang XQ701T1A	battery/battery_Sumsang_XQ701T1A.txt
+[3.39] Toshiba M805 T02T	battery/battery_Toshiba_M805_T02T.txt
 [4.0] == 综合性补丁==Comprehensive Patches	NullPatch.txt
 [4.1] Hasee K480N-i7_D1_Full_Patch	comprehensive/K480N-i7_D1_Full_Patch.txt
