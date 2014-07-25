@@ -1,0 +1,533 @@
+# 注意：神舟 K480N-i7_D1 神舟 K480N-i5_D1 专用 综合补丁，D2、D3 版本请勿使用
+
+#Maintained by: dxxs for: 派奇
+#K480N-i7_D1_Full _Patch.txt
+
+# version(版本): 1.0
+# Update Time(更新时间) : initial version, 初始版本
+
+# initial work by dxxs 2014-07-25, 由 HJMac 制作 
+
+# works for: 针对
+#  HASEE 神舟 K480N-i7_D1
+
+# DTGP 补丁（必需）
+#Maintained by: PHPdev32 for: Sourceforge
+into method label DTGP remove_entry;
+into definitionblock code_regex . insert
+begin
+Method (DTGP, 5, NotSerialized)\n
+{\n
+    If (LEqual (Arg0, Buffer (0x10)\n
+            {\n
+                /* 0000 */    0xC6, 0xB7, 0xB5, 0xA0, 0x18, 0x13, 0x1C, 0x44, \n
+                /* 0008 */    0xB0, 0xC9, 0xFE, 0x69, 0x5E, 0xAF, 0x94, 0x9B\n
+            }))\n
+    {\n
+        If (LEqual (Arg1, One))\n
+        {\n
+            If (LEqual (Arg2, Zero))\n
+            {\n
+                Store (Buffer (One)\n
+                    {\n
+                        0x03\n
+                    }, Arg4)\n
+                Return (One)\n
+            }\n
+            If (LEqual (Arg2, One))\n
+            {\n
+                Return (One)\n
+            }\n
+        }\n
+    }\n
+    Store (Buffer (One)\n
+        {\n
+            0x00\n
+        }, Arg4)\n
+    Return (Zero)\n
+}
+end;
+
+
+# 修复 RTC（防止 BIOS 重置的补丁）
+into device name_hid PNP0B00 code_regex (IO\s\((?:\s*[^,]+,\s*(?:\/\/\s.*)?\s*\n)+\s*)(\dx\d+)(,\s*(?:\/\/\s.*)?\s*\n\s*\)) replace_matched begin %10x02%3 end;
+
+
+# Atheros 9280 无线网卡补丁
+#Maintained by: RehabMan for: Laptop Patches
+#wifi_AR9280-RP02-WLAN.txt
+#   Airport fix works with vanilla IO80211 kext
+into method label _DSM parent_label WLAN remove_entry;
+into device label WLAN parent_label RP02 insert
+begin
+Method (_DSM, 4, NotSerialized)\n
+{\n
+    If (LEqual (Arg2, Zero)) { Return (Buffer() { 0x03 } ) }\n
+    Return (Package()\n
+    {\n
+        "device-id", Buffer() { 0x30, 0x00, 0x00, 0x00 },\n
+        "name", "pci168c,30",\n
+        "AAPL,slot-name", Buffer() { "AirPort" },\n
+        "device_type", Buffer() { "AirPort" },\n
+        "model", Buffer() { "Atheros 9280 802.11 b/g/n Wireless Network Adapter" },\n
+        "subsystem-id", Buffer() { 0x8F, 0x00, 0x00, 0x00 },\n
+        "subsystem-vendor-id", Buffer() { 0x6B, 0x10, 0x00, 0x00 },\n
+    })\n
+}\n
+end;
+
+
+# Realtek 有线网卡内建补丁
+# Maintained by: PJALM (help@pjalm.com) for: http://pjalm.info/repos/intel7/
+# Patch Name    : Realtek Gigabit Ethernet
+# Patch Version : 1.0
+# Fixes 'Built-in' status for Realtek Gigabit Ethernet
+into method label _DSM parent_label GLAN remove_entry;
+into device label GLAN insert begin
+Method (_DSM, 4, NotSerialized)\n
+{\n
+	Store (Package (0x0C) {\n
+		"AAPL,slot-name", "Built In",\n
+		"name", "Realtek Ethernet Controller",\n
+		"model", "Realtek RTL8168F/8111F Gigabit Network Controller",\n
+		"device_type", Buffer (0x13) {"Ethernet Controller"},\n
+		"built-in", Buffer (One) {0x01},\n
+		"location", Buffer (0x02) {"1"}\n
+	}, Local0)\n
+	DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))\n
+	Return (Local0)\n
+}
+end;
+
+
+# HDEF 声卡补丁（ID=1）
+# Maintained by: toleda for: github.com/toleda/audio_alc8xx
+# File: hdef0-add_dsdt/HDEF-1.txt_v2.0
+# Credit: PikeRAlpha
+# Add_HDEF, for dsdts with no HDEF, set Audio_ID: 1
+# 1. Add HDEF, set Audio ID:1/layout-id=1
+into device name_adr 0x001B0000 set_label begin HDEF end;
+into device label PCI0 insert
+begin
+Device (HDEF)\n
+{\n
+    Name (_ADR, 0x001B0000)\n
+    Method (_DSM, 4, NotSerialized)\n
+    {\n
+	    If (LEqual (Arg2, Zero)) { Return (Buffer() { 0x03 } ) }\n
+	    Return (Package()\n
+	    {\n
+                "layout-id", Buffer() { 0x01, 0x00, 0x00, 0x00 },\n
+                "PinConfigurations", Buffer(Zero) {},\n
+  	        "hda-gfx", Buffer() { "onboard-1" },\n
+	    })\n
+    }\n
+}\n
+end;
+into definitionblock code_regex . insert
+begin Store ("hdef0-add_dsdt/HDEF-1.txt_v2.0 dsdt edits, github.com/toleda", Debug) end;
+
+
+# 修复 IRQ 补丁（配合 HDEF 补丁使用）
+#Maintained by: RehabMan for: Laptop Patches
+#system_IRQ.txt
+#     IRQ fix
+into device name_hid PNP0000 code_regex IRQNoFlags\s\(\)\n\s+\{(\d+)\} remove_matched;
+into device name_hid PNP0100 code_regex IRQNoFlags\s\(\)\n\s+\{(\d+)\} remove_matched;
+into device name_hid PNP0B00 code_regex IRQNoFlags\s\(\)\n\s+\{(\d+)\} remove_matched;
+into device name_hid PNP0103 code_regex IRQNoFlags\s\(\)\n\s+\{.*\} removeall_matched;
+into device name_hid PNP0103 code_regex Name\s\(([^,]+),\sResourceTemplate\s\(\).*\n\s+\{((?:.|\n)*)\}\) replace_matched
+begin
+Name (%1, ResourceTemplate()\n
+{\n
+    IRQNoFlags() { 0, 8, 11, 15 }\n
+%2
+})\n
+end;
+
+
+# 移除 _SB.PCI0.VGA 代码段
+into method label _DSM parent_label _SB.PCI0.VGA remove_entry;
+
+
+# HD4000 显卡补丁
+#Maintained by: RehabMan for: Laptop Patches
+#graphics_HD4K_low.txt
+# Use this patch if your laptop has the standard 1366x768 screen
+# Use dual-link if you have 1600x900 or have upgraded
+# to 1080p screen.
+#   Inject HDMI info into GFX0/IGPU
+into method label _DSM parent_adr 0x00020000 remove_entry;
+into device name_adr 0x00020000 insert
+begin
+Method (_DSM, 4, NotSerialized)\n
+{\n
+    If (LEqual (Arg2, Zero)) { Return (Buffer() { 0x03 } ) }\n
+    Return (Package()\n
+    {\n
+        "AAPL,ig-platform-id", Buffer() { 0x03, 0x00, 0x66, 0x01 },\n
+        "hda-gfx", Buffer() { "onboard-1" },\n
+    })\n
+}\n
+end;
+
+
+# 屏蔽 NVIDIA 独显补丁
+into Scope label _SB.PCI0.RP00.VGA insert
+begin
+Method (OFFN, 0, NotSerialized)\n
+{\n
+SAVO ()\n
+Store (One, LNKD)\n
+Store (0x03, PWST)\n
+Sleep (0x64)\n
+SGPL (0x32, One, Zero)\n
+Sleep (0x64)\n
+SGPL (0x36, One, Zero)\n
+Sleep (0x64)\n
+Store (One, SETF)\n
+Store (0x03, _PSC)\n
+Store (One, DGPS)\n
+ISMI (0xB3)\n
+}\n
+end;
+
+into method label _WAK code_regex P8XH\s\(One,\s0xAB\)\s+WAK\s\(Arg0\) replaceall_matched begin P8XH (One, 0xAB)\nWAK (Arg0)\nIf (CondRefOf(\\_SB_.PCI0.RP00.VGA.OFFN))\n{\n\\_SB_.PCI0.RP00.VGA.OFFN()\n}\nend;
+
+into method label _PTS code_regex Store\s\(Zero,\sP80D\)\s+P8XH\s\(Zero,\sArg0\)\s+PTS\s\(Arg0\) replaceall_matched begin Store (Zero, P80D)\nP8XH (Zero, Arg0)\nPTS (Arg0)\nIf (CondRefOf(\\_SB_.PCI0.RP00.VGA._PS0))\n{\n\\_SB_.PCI0.RP00.VGA._PS0()\n}\nend;
+
+into method label _INI parent_label VGA insert
+begin
+If (CondRefOf(\_SB_.PCI0.RP00.VGA.OFFN))\n
+{\n
+\_SB_.PCI0.RP00.VGA.OFFN()\n
+}\n
+end;
+
+
+# 亮度调节小太阳
+#Maintained by: RehabMan for: Laptop Patches
+#graphics_PNLF.txt
+# This patch enables the brightness slider in SysPrefs->Displays
+# and will also enable activation of sleep mode by closing
+# the laptop lid.
+# This patch is a "basic" PNLF patch and doesn't attempt 
+# to fix various common problems with the backlight control.
+# For advanced patches, see:
+#   graphics_PNLF_ivy_sandy.txt
+#   graphics_PNLF_haswell.txt
+into device label PNLF remove_entry;
+into definitionblock code_regex . insert
+begin
+Scope (\_SB)\n
+{\n
+    Device (PNLF)\n
+    {\n
+        Name (_HID, EisaId ("APP0002"))\n
+        Name (_CID, "backlight")\n
+        Name (_UID, 0x0A)\n
+        Name (_STA, 0x0B)\n
+    }\n
+}\n
+end;
+
+
+# 修复 USB 相关功能
+#Maintained by: RehabMan for: Laptop Patches
+#usb_USB_7-series.txt
+
+# USB property injection for 7-series boards (originally HM76)
+
+# Insert Apple USB properties into EHC1
+into method label _DSM parent_adr 0x001D0000 remove_entry;
+into device name_adr 0x001D0000 insert
+begin
+Method (_DSM, 4, NotSerialized)\n
+{\n
+    If (LEqual (Arg2, Zero)) { Return (Buffer() { 0x03 } ) }\n
+    Return (Package()\n
+    {\n
+        "AAPL,clock-id", Buffer() { 0x01 },\n
+        "built-in", Buffer() { 0x00 },\n
+        "subsystem-id", Buffer() { 0x70, 0x72, 0x00, 0x00 },\n
+        "subsystem-vendor-id", Buffer() { 0x86, 0x80, 0x00, 0x00 },\n
+        "AAPL,current-available", 2100,\n
+        "AAPL,current-extra", 2200,\n
+        "AAPL,current-extra-in-sleep", 1600,\n
+        "AAPL,device-internal", 0x02,\n
+        "AAPL,max-port-current-in-sleep", 2100,\n
+    })\n
+}\n
+end;
+
+# Insert Apple USB properties into EHC2
+into method label _DSM parent_adr 0x001A0000 remove_entry;
+into device name_adr 0x001A0000 insert
+begin
+Method (_DSM, 4, NotSerialized)\n
+{\n
+    If (LEqual (Arg2, Zero)) { Return (Buffer() { 0x03 } ) }\n
+    Return (Package()\n
+    {\n
+        "AAPL,clock-id", Buffer() { 0x01 },\n
+        "built-in", Buffer() { 0x00 },\n
+        "subsystem-id", Buffer() { 0x70, 0x72, 0x00, 0x00 },\n
+        "subsystem-vendor-id", Buffer() { 0x86, 0x80, 0x00, 0x00 },\n
+        "AAPL,current-available", 2100,\n
+        "AAPL,current-extra", 2200,\n
+        "AAPL,current-extra-in-sleep", 1600,\n
+        "AAPL,device-internal", 0x02,\n
+        "AAPL,max-port-current-in-sleep", 2100,\n
+    })\n
+}\n
+end;
+
+# Insert Apple USB properties into USB 3.0 XHC
+into method label _DSM parent_adr 0x00140000 remove_entry;
+into device name_adr 0x00140000 insert
+begin
+Method (_DSM, 4, NotSerialized)\n
+{\n
+    If (LEqual (Arg2, Zero)) { Return (Buffer() { 0x03 } ) }\n
+    Return (Package()\n
+    {\n
+        "AAPL,clock-id", Buffer() { 0x02 },\n
+        "built-in", Buffer() { 0x00 },\n
+        "subsystem-id", Buffer() { 0x70, 0x72, 0x00, 0x00 },\n
+        "subsystem-vendor-id", Buffer() { 0x86, 0x80, 0x00, 0x00 },\n
+        "AAPL,current-available", 2100,\n
+        "AAPL,current-extra", 2200,\n
+        "AAPL,current-extra-in-sleep", 1600,\n
+        "AAPL,device-internal", 0x02,\n
+        "AAPL,max-port-current-in-sleep", 2100,\n
+    })\n
+}\n
+end;
+
+
+#Maintained by: dxxs for: 派奇
+#battery_Hasee_K480N.txt
+
+# version(版本): 1.0
+# Update Time(更新时间) : initial version, 初始版本
+
+# initial work by dxxs 2014-07-20, 由 dxxs 制作 
+
+# works for: 针对
+#  HASEE 神舟 K480N
+
+# Tip: If you get a 0% battery status,you should also patch the Rehabman's "Fix Mutex with non-zero SyncLevel" patch.
+# You also can patch the both of your computer's battery patch and the Rehabman's patch at one time.
+
+# 注意：如果打过电量补丁后，有获取的电池状态显示为0%的情况，还需要打 Rehabman的 “Fix Mutex with non-zero SyncLevel” 补丁。
+# 你也可以，一次性打好 自己电脑的电量补丁 和 Rehabman 的那个补丁。
+
+# ==== Field devide 字段拆分 ====
+#B0VL
+into device label WEC code_regex B0VL,\s+16 replace_matched begin B0V0,8,B0V1,8 end;
+#B0RC
+into device label WEC code_regex B0RC,\s+16 replace_matched begin B0R0,8,B0R1,8 end;
+#B0FC
+into device label WEC code_regex B0FC,\s+16 replace_matched begin B0F0,8,B0F1,8 end;
+#B0ST
+into device label WEC code_regex B0ST,\s+16 replace_matched begin B0S0,8,B0S1,8 end;
+#B0CC
+into device label WEC code_regex B0CC,\s+16 replace_matched begin B0CA,8,B0CB,8 end;
+#B1VL
+into device label WEC code_regex B1VL,\s+16 replace_matched begin B1V0,8,B1V1,8 end;
+#B1RC
+into device label WEC code_regex B1RC,\s+16 replace_matched begin B1R0,8,B1R1,8 end;
+#B1FC
+into device label WEC code_regex B1FC,\s+16 replace_matched begin B1F0,8,B1F1,8 end;
+#B1ST
+into device label WEC code_regex B1ST,\s+16 replace_matched begin B1S0,8,B1S1,8 end;
+#B1CC
+into device label WEC code_regex B1CC,\s+16 replace_matched begin B1CA,8,B1CB,8 end;
+#B0DC
+into device label WEC code_regex B0DC,\s+16 replace_matched begin B0D0,8,B0D1,8 end;
+#B0DV
+into device label WEC code_regex B0DV,\s+16 replace_matched begin B0D2,8,B0D3,8 end;
+#B0SN
+into device label WEC code_regex B0SN,\s+16 replace_matched begin B0S2,8,B0S3,8 end;
+#B0MD
+into device label WEC code_regex B0MD,\s+16 replace_matched begin B0M0,8,B0M1,8 end;
+#B1DC
+into device label WEC code_regex B1DC,\s+16 replace_matched begin B1D0,8,B1D1,8 end;
+#B1DV
+into device label WEC code_regex B1DV,\s+16 replace_matched begin B1D2,8,B1D3,8 end;
+#B1SN
+into device label WEC code_regex B1SN,\s+16 replace_matched begin B1S2,8,B1S3,8 end;
+#B1MD
+into device label WEC code_regex B1MD,\s+16 replace_matched begin B1M0,8,B1M1,8 end;
+#F0TS
+into device label WEC code_regex F0TS,\s+16 replace_matched begin F0T0,8,F0T1,8 end;
+#F1TS
+into device label WEC code_regex F1TS,\s+16 replace_matched begin F1T0,8,F1T1,8 end;
+#PCPT
+into device label WEC code_regex PCPT,\s+16 replace_matched begin PCPA,8,PCPB,8 end;
+#SYSC
+into device label WEC code_regex SYSC,\s+16 replace_matched begin SYSA,8,SYSB,8 end;
+
+# ==== Replace called method 替换调用方法 ====
+#B0VL
+into method label BVOT code_regex B0VL replaceall_matched begin B1B2(B0V0,B0V1) end;
+into method label CPWR code_regex \\_SB.PCI0.LPCB.WEC.B0VL replaceall_matched begin B1B2(\\_SB.PCI0.LPCB.WEC.B0V0,\\_SB.PCI0.LPCB.WEC.B0V1) end;
+#B0RC
+into method label BRCP code_regex B0RC replaceall_matched begin B1B2(B0R0,B0R1) end;
+#B0FC
+into method label BIF2 code_regex B0FC replaceall_matched begin B1B2(B0F0,B0F1) end;
+#B0ST
+into method label BSTS code_regex B0ST replaceall_matched begin B1B2(B0S0,B0S1) end;
+#B0CC
+into method label BCRT code_regex B0CC replaceall_matched begin B1B2(B0CA,B0CB) end;
+into method label CPWR code_regex \\_SB.PCI0.LPCB.WEC.B0CC replaceall_matched begin B1B2(\\_SB.PCI0.LPCB.WEC.B0CA,\\_SB.PCI0.LPCB.WEC.B0CB) end;
+#B1VL
+into method label BVOT code_regex B1VL replaceall_matched begin B1B2(B1V0,B1V1) end;
+#B1RC
+into method label BRCP code_regex B1RC replaceall_matched begin B1B2(B1R0,B1R1) end;
+#B1FC
+into method label BIF2 code_regex B1FC replaceall_matched begin B1B2(B1F0,B1F1) end;
+#B1ST
+into method label BSTS code_regex B1ST replaceall_matched begin B1B2(B1S0,B1S1) end;
+#B1CC
+into method label BCRT code_regex B1CC replaceall_matched begin B1B2(B1CA,B1CB) end;
+#B0DC
+into method label BIF1 code_regex B0DC replaceall_matched begin B1B2(B0D0,B0D1) end;
+#B0DV
+into method label BIF4 code_regex B0DV replaceall_matched begin B1B2(B0D2,B0D3) end;
+#B0SN
+into method label BIFA code_regex B0SN replaceall_matched begin B1B2(B0S2,B0S3) end;
+#B0MD
+into method label BIF0 code_regex B0MD replaceall_matched begin B1B2(B0M0,B0M1) end;
+into method label BIF3 code_regex B0MD replaceall_matched begin B1B2(B0M0,B0M1) end;
+#B1DC
+into method label BIF1 code_regex B1DC replaceall_matched begin B1B2(B1D0,B1D1) end;
+#B1DV
+into method label BIF4 code_regex B1DV replaceall_matched begin B1B2(B1D2,B1D3) end;
+#B1SN
+into method label BIFA code_regex B1SN replaceall_matched begin B1B2(B1S2,B1S3) end;
+#B1MD
+into method label BIF0 code_regex B1MD replaceall_matched begin B1B2(B1M0,B1M1) end;
+into method label BIF3 code_regex B1MD replaceall_matched begin B1B2(B1M0,B1M1) end;
+#F0TS
+into method label RFAN code_regex \\_SB.PCI0.LPCB.WEC.F0TS replaceall_matched begin B1B2(\\_SB.PCI0.LPCB.WEC.F0T0,\\_SB.PCI0.LPCB.WEC.F0T1) end;
+into method label M633 code_regex F0TS replaceall_matched begin B1B2(F0T0,F0T1) end;
+#F1TS
+into method label RFAN code_regex \\_SB.PCI0.LPCB.WEC.F1TS replaceall_matched begin B1B2(\\_SB.PCI0.LPCB.WEC.F1T0,\\_SB.PCI0.LPCB.WEC.F1T1) end;
+into method label M633 code_regex F1TS replaceall_matched begin B1B2(F1T0,F1T1) end;
+#PCPT
+into method label RTMP code_regex \\_SB.PCI0.LPCB.WEC.PCPT replaceall_matched begin B1B2(\\_SB.PCI0.LPCB.WEC.PCPA,\\_SB.PCI0.LPCB.WEC.PCPB) end;
+into method label M632 code_regex PCPT replaceall_matched begin B1B2(PCPA,PCPB) end;
+#SYSC
+into method label CPWR code_regex \\_SB.PCI0.LPCB.WEC.SYSC replaceall_matched begin B1B2(\\_SB.PCI0.LPCB.WEC.SYSA,\\_SB.PCI0.LPCB.WEC.SYSB) end;
+#BDAT
+into method label SMBR code_regex BDAT replaceall_matched begin RECB(0x71, 256) end;
+into method label SMBW code_regex Store\s\(Arg4,\sBDAT\) replaceall_matched begin WECB(0x07, 256,Arg4) end;
+
+# ==== Data handling method 数据处理方法 ====
+# utility methods to read/write buffers from/to EC
+into method label RE1B parent_label WEC remove_entry;
+into method label RECB parent_label WEC remove_entry;
+into device label WEC insert
+begin
+Method (RE1B, 1, NotSerialized)\n
+{\n
+    OperationRegion(ERAM, EmbeddedControl, Arg0, 1)\n
+    Field(ERAM, ByteAcc, NoLock, Preserve) { BYTE, 8 }\n
+    Return(BYTE)\n
+}\n
+Method (RECB, 2, Serialized)\n
+{\n
+    ShiftRight(Arg1, 3, Arg1)\n
+    Name(TEMP, Buffer(Arg1) { })\n
+    Add(Arg0, Arg1, Arg1)\n
+    Store(0, Local0)\n
+    While (LLess(Arg0, Arg1))\n
+    {\n
+        Store(RE1B(Arg0), Index(TEMP, Local0))\n
+        Increment(Arg0)\n
+        Increment(Local0)\n
+    }\n
+    Return(TEMP)\n
+}\n
+end;
+
+into method label WE1B parent_label WEC remove_entry;
+into method label WECB parent_label WEC remove_entry;
+into device label WEC insert
+begin
+Method (WE1B, 2, NotSerialized)\n
+{\n
+    OperationRegion(ERAM, EmbeddedControl, Arg0, 1)\n
+    Field(ERAM, ByteAcc, NoLock, Preserve) { BYTE, 8 }\n
+    Store(Arg1, BYTE)\n
+}\n
+Method (WECB, 3, Serialized)\n
+// Arg0 - offset in bytes from zero-based EC\n
+// Arg1 - size of buffer in bits\n
+// Arg2 - value to write\n
+{\n
+    ShiftRight(Arg1, 3, Arg1)\n
+    Name(TEMP, Buffer(Arg1) { })\n
+    Store(Arg2, TEMP)\n
+    Add(Arg0, Arg1, Arg1)\n
+    Store(0, Local0)\n
+    While (LLess(Arg0, Arg1))\n
+    {\n
+        WE1B(Arg0, DerefOf(Index(TEMP, Local0)))\n
+        Increment(Arg0)\n
+        Increment(Local0)\n
+    }\n
+}\n
+end;
+
+into method label B1B2 remove_entry;
+into definitionblock code_regex . insert
+begin
+Method (B1B2, 2, NotSerialized)\n
+{\n
+Return(Or(Arg0, ShiftLeft(Arg1, 8)))\n
+\n
+}\n
+end;
+
+
+# 修复电量显示为 0% 的问题
+#Maintained by: RehabMan for: Laptop Patches
+#system_Mutex.txt
+# Some DSDTs use Mutex objects with non-zero a SyncLevel.  Evidently,
+# OS X has some difficulty with this part of the ACPI spec, either that 
+# or the DSDTs are, in fact, codec incorrectly and Windows is ignoring 
+# it.
+# The common result of a non-zero SyncLevel is failure of methods at the
+# point of Acquire on the mutext in question.  This can result in strange
+# behavior, failed battery status, or other issues.
+# This patch corrects all Mutex objects declared with a non-zero
+# SyncLevel to use zero.
+# 2x as there is some sort of MaciASL bug...
+# (code_regex_not seems broken)
+#into_all all code_regex_not Mutex\s+\([^,]*,\s+0x00\) code_regex Mutex\s+\(([^,]*),\s+[^)]*\) replaceall_matched begin Mutex(%1, 0) end;
+#into_all all code_regex_not Mutex\s+\([^,]*,\s+0x00\) code_regex Mutex\s+\(([^,]*),\s+[^)]*\) replaceall_matched begin Mutex(%1, 0) end;
+
+# 10x as workaround for MaciASL bug...
+into_all all code_regex Mutex\s+\(([^,]*),\s+[^)]*\) replaceall_matched begin Mutex(%1, 0) end;
+into_all all code_regex Mutex\s+\(([^,]*),\s+[^)]*\) replaceall_matched begin Mutex(%1, 0) end;
+into_all all code_regex Mutex\s+\(([^,]*),\s+[^)]*\) replaceall_matched begin Mutex(%1, 0) end;
+into_all all code_regex Mutex\s+\(([^,]*),\s+[^)]*\) replaceall_matched begin Mutex(%1, 0) end;
+into_all all code_regex Mutex\s+\(([^,]*),\s+[^)]*\) replaceall_matched begin Mutex(%1, 0) end;
+into_all all code_regex Mutex\s+\(([^,]*),\s+[^)]*\) replaceall_matched begin Mutex(%1, 0) end;
+into_all all code_regex Mutex\s+\(([^,]*),\s+[^)]*\) replaceall_matched begin Mutex(%1, 0) end;
+into_all all code_regex Mutex\s+\(([^,]*),\s+[^)]*\) replaceall_matched begin Mutex(%1, 0) end;
+into_all all code_regex Mutex\s+\(([^,]*),\s+[^)]*\) replaceall_matched begin Mutex(%1, 0) end;
+into_all all code_regex Mutex\s+\(([^,]*),\s+[^)]*\) replaceall_matched begin Mutex(%1, 0) end;
+
+
+# 以下是警告修复
+
+into_all all code_regex _T_([0-6]) replaceall_matched begin T_%1 end;
+
+into_all all code_regex (Acquire\s\(MUTE,\s0x)....\)
+replace_matched
+begin
+%1FFFF)
+end;
