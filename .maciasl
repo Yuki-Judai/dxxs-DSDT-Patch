@@ -41,7 +41,6 @@
 [3.33] Lenovo Y470P	battery/battery_Lenovo_Y470P.txt
 [3.34] Lenovo Z360	battery/battery_Lenovo_Z360.txt
 [3.35] Lenovo Z480	battery/battery_Lenovo_Z480.txt
-[注意] =已确认ThinkPad还需打0%补丁==	NullPatch.txt
 [3.36] ThinkPad E430	battery/battery_ThinkPad_E430.txt
 [3.37] ThinkPad E431	battery/battery_ThinkPad_E431.txt
 [3.38] ThinkPad E531	battery/battery_ThinkPad_E531.txt
@@ -52,3 +51,4 @@
 [3.43] Toshiba M805 T02T	battery/battery_Toshiba_M805_T02T.txt
 [4.0] == 综合性补丁==Comprehensive Patches	NullPatch.txt
 [4.1] Hasee K480N-i7_D1_Full_Patch	comprehensive/K480N-i7_D1_Full_Patch.txt
+[注意] =ThinkPad还需打0%补丁==	NullPatch.txt
