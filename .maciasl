@@ -49,6 +49,7 @@
 [3.41] Sony Fit-15E/SVF-15327/14316	battery/battery_Sony_Fit_15E_or_SVF15327.txt
 [3.42] Sumsang XQ701T1A	battery/battery_Sumsang_XQ701T1A.txt
 [3.43] Toshiba M805 T02T	battery/battery_Toshiba_M805_T02T.txt
+[3.44] TU131 准系统	battery/battery_TU131.txt
 [4.0] == 综合性补丁==Comprehensive Patches	NullPatch.txt
 [4.1] Hasee K480N-i7_D1_Full_Patch	comprehensive/K480N-i7_D1_Full_Patch.txt
 [注意] =ThinkPad还需打0%补丁==	NullPatch.txt
