@@ -18,38 +18,39 @@
 [3.10] DELL 14TR 7420	battery/battery_Dell_14TR_7420.txt
 [3.11] DELL 5220 15R 2618	battery/battery_Dell_5220_15R_2618.txt
 [3.12] DELL XPS 14Z	battery/battery_Dell_XPS_14Z.txt
-[3.13] Gigabyte U24F	battery/battery_Gigabyte_U24F.txt
-[3.14] HASEE A460	battery/battery_Hasee_A460.txt
-[3.15] HASEE K480D	battery/battery_Hasee_K480D.txt
-[3.16] HASEE K480N	battery/battery_Hasee_K480N.txt
-[3.17] HASEE K580S	battery/battery_HASEE_K580S.txt
-[3.18] HASEE K590S	battery/battery_HASEE_K590S.txt
-[3.19] HASEE K650C	battery/battery_HASEE_K650C.txt
-[3.20] HASEE/Terrans Force-K790S/X411	battery/battery_clevo_w740su.txt
-[3.21] HASEE UI45	battery/battery_Hasee_UI45.txt
-[3.22] HASEE UN43	battery/battery_Hasee_UN43.txt
-[3.23] HP Envy6 1005TX	battery/battery_HP_Envy6_1005TX.txt
-[3.24] HP Pavilion G4	battery/battery_HP_Pavilion_G4.txt
-[3.25] Lenovo B450	battery/battery_Lenovo_B450.txt
-[3.26] Lenovo E43	battery/battery_Lenovo_E43.txt
-[3.27] Lenovo G460 	battery/battery_Lenovo_G460.txt
-[3.28] Lenovo K47G	battery/battery_Lenovo_K47G.txt
-[3.29] Lenovo V450	battery/battery_Lenovo_V450.txt
-[3.30] Lenovo Y40	battery/battery_Lenovo_Y40.txt
-[3.31] Lenovo Y410P	battery/battery_Lenovo_Y410P.txt
-[3.32] Lenovo Y450	battery/battery_Lenovo_Y450.txt
-[3.33] Lenovo Y470P	battery/battery_Lenovo_Y470P.txt
-[3.34] Lenovo Z360	battery/battery_Lenovo_Z360.txt
-[3.35] Lenovo Z480	battery/battery_Lenovo_Z480.txt
-[3.36] ThinkPad E430	battery/battery_ThinkPad_E430.txt
-[3.37] ThinkPad E431	battery/battery_ThinkPad_E431.txt
-[3.38] ThinkPad E531	battery/battery_ThinkPad_E531.txt
-[3.39] ThinkPad New X1 Carbon	battery/battery_ThinkPad_New_X1_Carbon.txt
-[3.40] MSI GE60/GS60/TongFang MECHREVO MR X5	battery/battery_MECHREVO_MR_X5.txt
-[3.41] Sony Fit-15E/SVF-15327/14316	battery/battery_Sony_Fit_15E_or_SVF15327.txt
-[3.42] Sumsang XQ701T1A	battery/battery_Sumsang_XQ701T1A.txt
-[3.43] Toshiba M805 T02T	battery/battery_Toshiba_M805_T02T.txt
-[3.44] TU131 准系统	battery/battery_TU131.txt
+[3.13] Fujitsu LH532	battery/battery_Fujitsu_LH532.txt
+[3.14] Gigabyte U24F	battery/battery_Gigabyte_U24F.txt
+[3.15] HASEE A460	battery/battery_Hasee_A460.txt
+[3.16] HASEE K480D	battery/battery_Hasee_K480D.txt
+[3.17] HASEE K480N	battery/battery_Hasee_K480N.txt
+[3.18] HASEE K580S	battery/battery_HASEE_K580S.txt
+[3.19] HASEE K590S	battery/battery_HASEE_K590S.txt
+[3.20] HASEE K650C	battery/battery_HASEE_K650C.txt
+[3.21] HASEE/Terrans Force-K790S/X411	battery/battery_clevo_w740su.txt
+[3.22] HASEE UI45	battery/battery_Hasee_UI45.txt
+[3.23] HASEE UN43	battery/battery_Hasee_UN43.txt
+[3.24] HP Envy6 1005TX	battery/battery_HP_Envy6_1005TX.txt
+[3.25] HP Pavilion G4	battery/battery_HP_Pavilion_G4.txt
+[3.26] Lenovo B450	battery/battery_Lenovo_B450.txt
+[3.27] Lenovo E43	battery/battery_Lenovo_E43.txt
+[3.28] Lenovo G460 	battery/battery_Lenovo_G460.txt
+[3.29] Lenovo K47G	battery/battery_Lenovo_K47G.txt
+[3.30] Lenovo V450	battery/battery_Lenovo_V450.txt
+[3.31] Lenovo Y40	battery/battery_Lenovo_Y40.txt
+[3.32] Lenovo Y410P	battery/battery_Lenovo_Y410P.txt
+[3.33] Lenovo Y450	battery/battery_Lenovo_Y450.txt
+[3.34] Lenovo Y470P	battery/battery_Lenovo_Y470P.txt
+[3.35] Lenovo Z360	battery/battery_Lenovo_Z360.txt
+[3.36] Lenovo Z480	battery/battery_Lenovo_Z480.txt
+[3.37] ThinkPad E430	battery/battery_ThinkPad_E430.txt
+[3.38] ThinkPad E431	battery/battery_ThinkPad_E431.txt
+[3.39] ThinkPad E531	battery/battery_ThinkPad_E531.txt
+[3.40] ThinkPad New X1 Carbon	battery/battery_ThinkPad_New_X1_Carbon.txt
+[3.41] MSI GE60/GS60/TongFang MECHREVO MR X5	battery/battery_MECHREVO_MR_X5.txt
+[3.42] Sony Fit-15E/SVF-15327/14316	battery/battery_Sony_Fit_15E_or_SVF15327.txt
+[3.43] Sumsang XQ701T1A	battery/battery_Sumsang_XQ701T1A.txt
+[3.44] Toshiba M805 T02T	battery/battery_Toshiba_M805_T02T.txt
+[3.45] TU131 准系统	battery/battery_TU131.txt
 [4.0] == 综合性补丁==Comprehensive Patches	NullPatch.txt
 [4.1] Hasee K480N-i7_D1_Full_Patch	comprehensive/K480N-i7_D1_Full_Patch.txt
 [注意] =ThinkPad还需打0%补丁==	NullPatch.txt
