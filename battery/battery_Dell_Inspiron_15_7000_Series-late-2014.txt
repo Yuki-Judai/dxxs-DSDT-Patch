@@ -1,5 +1,5 @@
 #Maintained by: dxxs for: 派奇
-#battery_Dell_XPS_14Z.txt
+#battery_Dell_Inspiron_15_7000_Series-late-2014.txt
 
 # version(版本): 1.0
 
