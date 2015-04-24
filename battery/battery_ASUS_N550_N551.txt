@@ -1,7 +1,7 @@
 #Maintained by: dxxs for: 派奇
 #battery_ASUS_N550_N551.txt
 
-# version(版本): 1.0
+# version(版本): 1.1
 # Update Time(更新时间) : 
 
 # initial work by dxxs 2015-04-24, 由 dxxs 制作 
@@ -30,7 +30,7 @@ into device label EC0 code_regex DT2B,\s+16 replace_matched begin DTB0,8,DTB1,8 
 
 # ==== Replace called method 替换调用方法 ====
 #B0C3
-into method label _BIX code_regex \^\^LPCB.EC0.B0C3 replaceall_matched begin B1B2(\^\^LPCB.EC0.B0CA,\^\^LPCB.EC0.B0CB) end;
+into method label _BIX code_regex \^\^LPCB.EC0.B0C3 replaceall_matched begin B1B2(^^LPCB.EC0.B0CA,^^LPCB.EC0.B0CB) end;
 #B0SN
 into method label BIFA code_regex B0SN replaceall_matched begin B1B2(B0N0,B0N1) end;
 #B1SN
