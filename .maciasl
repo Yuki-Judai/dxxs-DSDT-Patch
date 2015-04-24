@@ -51,7 +51,7 @@
 [bat] TU131 准系统	battery/battery_TU131.txt
 [com] --> Comprehensive Patches	NullPatch.txt
 [com] Hasee K480N-i7_D1_Full_Patch	comprehensive/K480N-i7_D1_Full_Patch.txt
-[general] General Patches	NullPatch.txt
+[general] --> General Patches	NullPatch.txt
 [general] Add AppleLPC	general/AppleLPC_Winth_id_3A18.txt
 [general] Ethernet BuiltIn	general/Ethernet_BuiltIn_Patch.txt
 [syn] --> Syntax Error Fixes	NullPatch.txt
