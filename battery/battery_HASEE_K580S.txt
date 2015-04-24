@@ -1,13 +1,14 @@
 #Maintained by: dxxs for: 派奇
 #battery_HASEE_K580S.txt
 
-# version(版本): 2.0
-# Update Time(更新时间) : 2014-6-26
+# version(版本): 2.1
+# Update Time(更新时间) : 2015-4-24
 
 # initial work by dxxs 2014-06-20, 由 dxxs 制作 
 
 # works for: 针对
 #  HASEE 神舟 K580S
+#  HASEE 神舟 K610D
 
 # Tip: If you get a 0% battery status,you should also patch the Rehabman's "Fix Mutex with non-zero SyncLevel" patch.
 # You also can patch the both of your computer's battery patch and the Rehabman's patch at one time.
