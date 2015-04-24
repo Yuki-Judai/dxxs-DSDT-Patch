@@ -1,4 +1,4 @@
-[bat] --> Battery Patches NullPatch.txt
+[bat] --> Battery Patches	NullPatch.txt
 [bat] Aa Fix Battery 0% Status	battery/battery_status_0%_fix.txt
 [bat] Acer Aspire EC-471	battery/battery_Acer_Aspire_EC_471G.txt
 [bat] Acer Aspire E1-571/R7-571/R7-572	battery/battery_Acer_E1-571G_R7-571G_R7-572G.txt
