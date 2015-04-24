@@ -1,75 +1,75 @@
-==语法错误==Syntax Error Fixes	NullPatch.txt
--SSDT P8XH error fix	syntax/SSDT_P8XH_Error_Fix.txt
--SSDT Package(){0x80000000} error fix	syntax/SSDT_Package(){0x80000000}_Eror_Fix.txt
--Non-hex leters must be upper case	syntax/Non-hex_leters_must_be_upper_case.txt
-==通用==General	NullPatch.txt
--Add AppleLPC	general/AppleLPC_Winth_id_3A18.txt
--Ethernet BuiltIn	general/Ethernet_BuiltIn_Patch.txt
-==电量补丁==Battery Patches	NullPatch.txt
--电量显示为0%修复-Fix Battery 0% Status	battery/battery_status_0%_fix.txt
-=Acer 宏碁= NullPatch.txt
--Acer Aspire EC-471	battery/battery_Acer_Aspire_EC_471G.txt
--Acer Aspire E1-571/R7-571/R7-572	battery/battery_Acer_E1-571G_R7-571G_R7-572G.txt
-=Alienware 外星人=  NullPatch.txt
--Alienware M14 XR2	battery/battery_Alienware_M14_XR2.txt
-=ASUS 华硕= NullPatch.txt
--ASUS A45VM/A45VD	battery/battery_ASUS_A45VM.txt
--ASUS F83VF	battery/battery_ASUS_F83VF.txt
--ASUS K42JZ/K43SJ/N43SN	battery/battery_ASUS_K42JZ-N43SN.txt
--ASUS K43SD/K56CM	battery/battery_ASUS_K43SD.txt
--ASUS N50	battery/battery_ASUS_N50.txt
--ASUS N55XI267/N75SF	battery/battery_ASUS_N55XI267.txt
-=Clevo 蓝天准系统=  NullPatch.txt
--Clevo P150HMx	battery/battery_Clevo_P150HMx.txt
-=DELL 戴尔= NullPatch.txt
--DELL 14TR 7420	battery/battery_Dell_14TR_7420.txt
--DELL 5220 15R 2618	battery/battery_Dell_5220_15R_2618.txt
--Dell Inspiron 15 7000 late 2014	battery/battery_Dell_Inspiron_15_7000_Series-late-2014.txt
--DELL XPS 14Z	battery/battery_Dell_XPS_14Z.txt
-=Fujitsu 富士通=  NullPatch.txt
--Fujitsu LH532	battery/battery_Fujitsu_LH532.txt
-=Gigabyte 技嘉= NullPatch.txt
--Gigabyte U24F	battery/battery_Gigabyte_U24F.txt
-=HASEE 神舟|Terrans Force 未来人类=  NullPatch.txt
--HASEE A460	battery/battery_Hasee_A460.txt
--HASEE K480D	battery/battery_Hasee_K480D.txt
--HASEE K480N	battery/battery_Hasee_K480N.txt
--HASEE K580S	battery/battery_HASEE_K580S.txt
--HASEE K590S	battery/battery_HASEE_K590S.txt
--HASEE K650C	battery/battery_HASEE_K650C.txt
--HASEE/Terrans Force-K790S/X411	battery/battery_clevo_w740su.txt
--HASEE UI45	battery/battery_Hasee_UI45.txt
--HASEE UN43	battery/battery_Hasee_UN43.txt
-=HP 惠普= NullPatch.txt
--HP Envy6 1005TX	battery/battery_HP_Envy6_1005TX.txt
--HP M4 1016TX	battery/battery_HP_M4_1016TX.txt
--HP Pavilion G4 1058TX	battery/battery_HP_Pavilion_G4_1058TX.txt
-=Lenovo 联想= NullPatch.txt
--Lenovo B450	battery/battery_Lenovo_B450.txt
--Lenovo E43	battery/battery_Lenovo_E43.txt
--Lenovo G460 	battery/battery_Lenovo_G460.txt
--Lenovo K47G	battery/battery_Lenovo_K47G.txt
--Lenovo V450	battery/battery_Lenovo_V450.txt
--Lenovo Y40	battery/battery_Lenovo_Y40.txt
--Lenovo Y410P	battery/battery_Lenovo_Y410P.txt
--Lenovo Y450	battery/battery_Lenovo_Y450.txt
--Lenovo Y470P	battery/battery_Lenovo_Y470P.txt
--Lenovo Z360	battery/battery_Lenovo_Z360.txt
--Lenovo Z480	battery/battery_Lenovo_Z480.txt
-=ThinkPad=  NullPatch.txt
-[*注意*]=ThinkPad还需打0%补丁== NullPatch.txt
--ThinkPad E40	battery/battery_ThinkPad_E40.txt
--ThinkPad E430	battery/battery_ThinkPad_E430.txt
--ThinkPad E431	battery/battery_ThinkPad_E431.txt
--ThinkPad E531	battery/battery_ThinkPad_E531.txt
--ThinkPad New X1 Carbon 2代	battery/battery_ThinkPad_New_X1_Carbon.txt
-=Sony 索尼= NullPatch.txt
--Sony Fit-15E/SVF-15327/14316	battery/battery_Sony_Fit_15E_or_SVF15327.txt
-=Sumsang 三星=  NullPatch.txt
--Sumsang XQ701T1A	battery/battery_Sumsang_XQ701T1A.txt
-=Toshiba 东芝=  NullPatch.txt
--Toshiba M805 T02T	battery/battery_Toshiba_M805_T02T.txt
-=蓝天之外的其它准系统=  NullPatch.txt
--TU131 准系统	battery/battery_TU131.txt
-==综合性补丁==Comprehensive Patches	NullPatch.txt
-Hasee K480N-i7_D1_Full_Patch	comprehensive/K480N-i7_D1_Full_Patch.txt
+[bat]==电量补丁==Battery Patches	NullPatch.txt
+[bat]-电量显示为0%修复-Fix Battery 0% Status	battery/battery_status_0%_fix.txt
+[bat]=Acer 宏碁= NullPatch.txt
+[bat]-Acer Aspire EC-471	battery/battery_Acer_Aspire_EC_471G.txt
+[bat]-Acer Aspire E1-571/R7-571/R7-572	battery/battery_Acer_E1-571G_R7-571G_R7-572G.txt
+[bat]=Alienware 外星人=  NullPatch.txt
+[bat]-Alienware M14 XR2	battery/battery_Alienware_M14_XR2.txt
+[bat]=ASUS 华硕= NullPatch.txt
+[bat]-ASUS A45VM/A45VD	battery/battery_ASUS_A45VM.txt
+[bat]-ASUS F83VF	battery/battery_ASUS_F83VF.txt
+[bat]-ASUS K42JZ/K43SJ/N43SN	battery/battery_ASUS_K42JZ-N43SN.txt
+[bat]-ASUS K43SD/K56CM	battery/battery_ASUS_K43SD.txt
+[bat]-ASUS N50	battery/battery_ASUS_N50.txt
+[bat]-ASUS N55XI267/N75SF	battery/battery_ASUS_N55XI267.txt
+[bat]=Clevo 蓝天准系统=  NullPatch.txt
+[bat]-Clevo P150HMx	battery/battery_Clevo_P150HMx.txt
+[bat]=DELL 戴尔= NullPatch.txt
+[bat]-DELL 14TR 7420	battery/battery_Dell_14TR_7420.txt
+[bat]-DELL 5220 15R 2618	battery/battery_Dell_5220_15R_2618.txt
+[bat]-Dell Inspiron 15 7000 late 2014	battery/battery_Dell_Inspiron_15_7000_Series-late-2014.txt
+[bat]-DELL XPS 14Z	battery/battery_Dell_XPS_14Z.txt
+[bat]=Fujitsu 富士通=  NullPatch.txt
+[bat]-Fujitsu LH532	battery/battery_Fujitsu_LH532.txt
+[bat]=Gigabyte 技嘉= NullPatch.txt
+[bat]-Gigabyte U24F	battery/battery_Gigabyte_U24F.txt
+[bat]=HASEE 神舟|Terrans Force 未来人类=  NullPatch.txt
+[bat]-HASEE A460	battery/battery_Hasee_A460.txt
+[bat]-HASEE K480D	battery/battery_Hasee_K480D.txt
+[bat]-HASEE K480N	battery/battery_Hasee_K480N.txt
+[bat]-HASEE K580S	battery/battery_HASEE_K580S.txt
+[bat]-HASEE K590S	battery/battery_HASEE_K590S.txt
+[bat]-HASEE K650C	battery/battery_HASEE_K650C.txt
+[bat]-HASEE/Terrans Force-K790S/X411	battery/battery_clevo_w740su.txt
+[bat]-HASEE UI45	battery/battery_Hasee_UI45.txt
+[bat]-HASEE UN43	battery/battery_Hasee_UN43.txt
+[bat]=HP 惠普= NullPatch.txt
+[bat]-HP Envy6 1005TX	battery/battery_HP_Envy6_1005TX.txt
+[bat]-HP M4 1016TX	battery/battery_HP_M4_1016TX.txt
+[bat]-HP Pavilion G4 1058TX	battery/battery_HP_Pavilion_G4_1058TX.txt
+[bat]=Lenovo 联想= NullPatch.txt
+[bat]-Lenovo B450	battery/battery_Lenovo_B450.txt
+[bat]-Lenovo E43	battery/battery_Lenovo_E43.txt
+[bat]-Lenovo G460 	battery/battery_Lenovo_G460.txt
+[bat]-Lenovo K47G	battery/battery_Lenovo_K47G.txt
+[bat]-Lenovo V450	battery/battery_Lenovo_V450.txt
+[bat]-Lenovo Y40	battery/battery_Lenovo_Y40.txt
+[bat]-Lenovo Y410P	battery/battery_Lenovo_Y410P.txt
+[bat]-Lenovo Y450	battery/battery_Lenovo_Y450.txt
+[bat]-Lenovo Y470P	battery/battery_Lenovo_Y470P.txt
+[bat]-Lenovo Z360	battery/battery_Lenovo_Z360.txt
+[bat]-Lenovo Z480	battery/battery_Lenovo_Z480.txt
+[bat]=ThinkPad=  NullPatch.txt
+[bat][*注意*]=ThinkPad还需打0%补丁== NullPatch.txt
+[bat]-ThinkPad E40	battery/battery_ThinkPad_E40.txt
+[bat]-ThinkPad E430	battery/battery_ThinkPad_E430.txt
+[bat]-ThinkPad E431	battery/battery_ThinkPad_E431.txt
+[bat]-ThinkPad E531	battery/battery_ThinkPad_E531.txt
+[bat]-ThinkPad New X1 Carbon 2代	battery/battery_ThinkPad_New_X1_Carbon.txt
+[bat]=Sony 索尼= NullPatch.txt
+[bat]-Sony Fit-15E/SVF-15327/14316	battery/battery_Sony_Fit_15E_or_SVF15327.txt
+[bat]=Sumsang 三星=  NullPatch.txt
+[bat]-Sumsang XQ701T1A	battery/battery_Sumsang_XQ701T1A.txt
+[bat]=Toshiba 东芝=  NullPatch.txt
+[bat]-Toshiba M805 T02T	battery/battery_Toshiba_M805_T02T.txt
+[bat]=蓝天之外的其它准系统=  NullPatch.txt
+[bat]-TU131 准系统	battery/battery_TU131.txt
+[com]==综合性补丁==Comprehensive Patches	NullPatch.txt
+[com]Hasee K480N-i7_D1_Full_Patch	comprehensive/K480N-i7_D1_Full_Patch.txt
+[general]==通用==General	NullPatch.txt
+[general]-Add AppleLPC	general/AppleLPC_Winth_id_3A18.txt
+[general]-Ethernet BuiltIn	general/Ethernet_BuiltIn_Patch.txt
+[syn]==语法错误==Syntax Error Fixes	NullPatch.txt
+[syn]-SSDT P8XH error fix	syntax/SSDT_P8XH_Error_Fix.txt
+[syn]-SSDT Package(){0x80000000} error fix	syntax/SSDT_Package(){0x80000000}_Eror_Fix.txt
+[syn]-Non-hex leters must be upper case	syntax/Non-hex_leters_must_be_upper_case.txt
