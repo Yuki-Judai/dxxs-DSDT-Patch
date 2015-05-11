@@ -38,6 +38,7 @@
 [bat] Lenovo Y410P	battery/battery_Lenovo_Y410P.txt
 [bat] Lenovo Y450	battery/battery_Lenovo_Y450.txt
 [bat] Lenovo Y470P	battery/battery_Lenovo_Y470P.txt
+[bat] Lenovo Z50	battery/battery_Lenovo_Z50.txt
 [bat] Lenovo Z360	battery/battery_Lenovo_Z360.txt
 [bat] Lenovo Z480	battery/battery_Lenovo_Z480.txt
 [bat] ThinkPad also have to patch 0% patch above== NullPatch.txt
