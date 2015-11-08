@@ -6,7 +6,8 @@
 
 # works for:
 #  Lenovo G50-70/80 
-#这是在原G50-70电池代码基础上的再修改，添加# fix 16-bit methods for G50-80
+#这是在原G50-70电池代码基础上的再修改，添加 fix 16-bit methods for G50-80
+#相关用户可以在https://github.com/riverai/G50-80-DSDT-AND-SSDT-For-Hackintosh得到一份该机器的DSDT & SSDT编辑示例。
 
 
 into method label B1B2 remove_entry;
